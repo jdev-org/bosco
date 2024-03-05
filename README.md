@@ -15,7 +15,7 @@ Au sein de votre mviewer réalisez les commandes suivantes :
 
 ```
 cd /apps
-git clone https://github.com/jdev-org/bosco.git
+git clone https://github.com/geosas/bosco.git
 ```
 
 Vous pouvez maintenant disposer de bosco via l'URl :
@@ -32,7 +32,7 @@ Si vous ne souhaitez pas cloner bosco dans mviewer directement, vous devrez cré
 
 ```
 cd /home/user/git
-git clone https://github.com/jdev-org/bosco.git
+git clone https://github.com/geosas/bosco.git
 ln -s /home/user/git/bosco /var/www/mviewer/apps/bosco
 ```
 
