@@ -1,0 +1,147 @@
+{{#features}}
+	<li id="{{feature_ol_uid}}" class="inventaire item" style="height: 330px;">
+        {{#observations}}
+            <p>
+                <b>Streams sélectionnés : </b> {{streamsNames}}
+            </p>
+        {{/observations}}
+        <div class="chart-container" id="chart-container" style="position: relative; margin: auto; height: 250; width:80vw">
+            <canvas id="chart-{{feature_ol_uid}}"></canvas>
+        </div>
+    </li>
+    <script>
+
+    var chart = null ;
+    let thingName = "";
+    let thingDescription = "";
+    const mvLayerId = "sensorthings";
+    const mvLayer = mviewer.getLayer(mvLayerId).layer;
+    const sensorthingsClass = mvLayer.sensorthings;
+    let featureWithObservations = mvLayer.getSource().getFeatures().filter(x => x.ol_uid == {{feature_ol_uid}});
+    const props = featureWithObservations[0].getProperties();
+
+    let streamsObs = sensorthingsClass.selectedStreams;
+    if(!streamsObs.length) {
+        streamsObs = props.sensorthings.observations.map(o => o.id);
+    }
+    const observations = props.sensorthings.observations
+    // DATASTREAM
+    let datastreams = props.sensorthings.datastreams;
+    let multidatastreams = props.sensorthings.multidatastreams;
+    let thing = props.sensorthings.thing;
+
+    var container = document.getElementById({{feature_ol_uid}});
+
+    console.log("Console...");
+
+    // newChart function
+    function newChart(title, subtitle) {
+       chart = Highcharts.stockChart(container, {
+           title: {
+               text: title
+           },
+           subtitle: {
+               text: subtitle
+           },
+           chart: {
+               zooming: {
+                   type: 'xy'
+               }
+           },
+           legend: {
+              enabled: true
+           },
+           rangeSelector: {
+               verticalAlign: 'top',
+               y: -35
+           },
+           plotOptions: {
+               series: {
+                    showInNavigator: true
+               }
+           },
+           xAxis : {
+               type: 'datetime'
+           }
+       })
+       return chart ;
+    }
+
+    // newSeries function
+    function newSeries (label,unitName,unitSymbol,datesValues,resultsValues) {
+        let datasets = [];
+        for (var i = 0 ; i < datesValues.length ; i++) {
+            datasets[i] = [datesValues[i],resultsValues[i]] ;
+        }
+        chart.addAxis({
+            id: unitName,
+            title:{
+                text: unitName
+            },
+            label:{
+                format: '{value} '+unitSymbol
+            },
+            opposite: true,
+            rotation: 10
+        });
+        chart.addSeries({
+            yAxis: unitName,
+            name: label,
+            data: datasets,
+            tooltip: {
+                valueDecimals: 2,
+                valueSuffix: unitSymbol
+            }
+        });
+    }
+
+    if (thing && thing.value && thing.value[0]) {
+        thingDescription = thing.value[0].description;
+        thingName = thing.value[0].name;
+    }
+    chart =  newChart(thingName,thingDescription);
+
+    // DATASTREAMS
+    if(datastreams && datastreams.length) {
+        streamsObs.map(data => {
+            let label = datastreams.filter(x => x.name === data)[0]?.name;
+            let description = datastreams.filter(x => x.name === data)[0]?.description;
+            let unitName = datastreams.filter(x => x.name === data)[0]?.unitOfMeasurement.name;
+            let unitSymbol = datastreams.filter(x => x.name === data)[0]?.unitOfMeasurement.symbol;
+            let result = _.find(observations, {name: data})?.result;
+            if(!data && !result) return;
+            let datesValues = result.map(o => new Date(o.phenomenonTime).getTime());
+            let resultsValues = result.map(o => o.result);
+            newSeries(label,unitName,unitSymbol,datesValues,resultsValues);
+
+        });
+    }
+
+    // MULTIDATASTREAMS
+    if(multidatastreams && multidatastreams.length) {
+        streamsObs.map(data => {
+            let dataObservations = _.find(observations, {name: data})?.result || [];
+            let yValues = dataObservations.map(o => o.result);
+            let unitOfMeasures = multidatastreams[0].unitOfMeasurements.map(x => x.name);
+            let unitSymbols = multidatastreams[0].unitOfMeasurements.map(x => x.symbol);
+            let unitDefinition = multidatastreams[0].unitOfMeasurements.map(x => x.definition);
+            let mapUnitDefinition = new Map();
+            let mapUnitSymbol = new Map();
+            for (var i = 0 ; i < unitOfMeasures.length ; i++) {
+                mapUnitSymbol.set (unitOfMeasures[i],unitSymbols[i]);
+                mapUnitDefinition.set (unitOfMeasures[i],unitDefinition[i]);
+            }
+            var zz=0
+            let unitOfMeasurementsDataset = unitOfMeasures.map(unit => {
+
+                let resultsValues = dataObservations.map(o => o.result[zz]);
+                zz+=1
+                let datesValues = dataObservations.map(o => new Date(o.phenomenonTime).getTime());
+                let unitName = mapUnitDefinition.get(unit); ;
+                let unitSymbol = mapUnitSymbol.get(unit); ;
+                newSeries(unit,unitName,unitSymbol,datesValues,resultsValues);
+            });
+        })
+    }
+    </script>
+{{/features}}
