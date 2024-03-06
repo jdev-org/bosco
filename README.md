@@ -20,7 +20,9 @@ git clone https://github.com/geosas/bosco.git
 
 Vous pouvez maintenant disposer de bosco via l'URl :
 
-https://monsiteweb.fr/mviewer?config=apps/bosco/bosco.xml
+https://monsiteweb.fr/mviewer?config=apps/bosco/bosco/default.xml
+
+> le répertoire de carte est dans le répertoire /bosco du dépôt /bosco. La redondance est actuellement volntaire.
 
 ## via un clone et un lien symbolique
 
@@ -33,11 +35,12 @@ Si vous ne souhaitez pas cloner bosco dans mviewer directement, vous devrez cré
 ```
 cd /home/user/git
 git clone https://github.com/geosas/bosco.git
-ln -s /home/user/git/bosco /var/www/mviewer/apps/bosco
+ln -s /home/user/git/bosco/bosco /var/www/mviewer/apps/bosco
 ```
+Ici, l'URL sera plus élégante car on pointe directement le répertoire `/apps/bosco` vers `git/bosco/bosco`
 
 > N'oubliez pas d'adapter les droits si nécessaire.
 
 Vous pouvez maintenant disposer de bosco via l'URl :
 
-https://monsiteweb.fr/mviewer?config=apps/bosco/bosco.xml
+https://monsiteweb.fr/mviewer?config=apps/bosco/default.xml
