@@ -7,6 +7,18 @@ Ce dépôt GitHub contient les sources de la carte Bosco.
 
 Disposer d'un mviewer déjà installé.
 
+Pour le mviewer a utilisé, cela dépend de la branche à tester :
+
+* Pour la branche main du projet  `/bosco`
+
+Utilisez la branche main ou develop du mviewer [mviewer/mviewer](https://github.com/mviewer/mviewer)
+
+* Pour la branche develop du projet `/bosco`
+
+En raison de modificaiton en cours dans le coeur du mviewer pour ce projet, utilisez la branche `mviewer-bosco` du mviewer [jdev-org/mviewer](https://github.com/jdev-org/mviewer).
+
+> Sur ce fork, les branches master et develop sont à jour avec le dépôt officiel. Vous pouvez l'utiliser dans le cas précédent également.
+
 ## via un clone
 
 Au sein de votre mviewer réalisez les commandes suivantes :
