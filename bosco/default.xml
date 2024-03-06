@@ -35,12 +35,14 @@
                 name="Chroniques de l'humidité des Parcelles "
                 visible="true"
                 expanded="true"
-		legendurl="https://geosas.fr/img/bosco/centroide.png"
+		        legendurl="https://geosas.fr/img/bosco/centroide.png"
                 queryable="true"
                 url="https://frost.geosas.fr/bosco/v1.0"
                 infopanel="bottom-panel"
-                style="redPoint"
+                customstyle='{"point":{"radius": 5, "fill": { "color": "yellow"}, "stroke":{"color": "black", "width": 2}}}'
+                style="sensorPoint"
                 top="1500"
+                srs="4326"
                 selector="id,name,description"
                 datastreamsfilter="name,description,id,unitOfMeasurement"
                 multidatastreamsfilter="name,description,id,unitOfMeasurements">
