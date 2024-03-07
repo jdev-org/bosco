@@ -84,7 +84,7 @@
                 queryable="true"
                 url="https://frost.geosas.fr/bosco/v1.0"
                 infopanel="bottom-panel"
-                customstyle='{"point":{"radius": 5, "fill": { "color": "yellow"}, "stroke":{"color": "black", "width": 2}}}'
+                customstyle='{"point":{"radius": 5, "fill": { "color": "red"}, "stroke":{"color": "black", "width": 2}}}'
                 style="sensorPoint"
                 top="1500" srs="4326"
                 selector="id,name,description"
