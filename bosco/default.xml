@@ -1,84 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-    <application title="Humidité de sols de surface par satellite - Projet BOSCO" mouseposition="false" logo="" help="apps/bosco/mviewer_help.html" measuretools="true" exportpng="true" style="css/themes/wet_asphalt.css" togglealllayersfromtheme="true"/>
+    <application
+        title="Humidité de sols de surface par satellite - Projet BOSCO"
+        mouseposition="false" logo=""
+        help="apps/bosco/mviewer_help.html"
+        measuretools="true"
+        exportpng="true"
+        style="css/themes/wet_asphalt.css"
+        togglealllayersfromtheme="true" />
     <extensions>
-    <extension type="javascript" src="apps/bosco/lib/chartjs-3.7.1/Chart.min.js" usededby="cad.js"/>
-    <extension type="javascript" src="apps/bosco/lib/highcharts/highstock.js"/>
-</extensions>
-    <mapoptions maxzoom="19" projection="EPSG:3857" center="-227238,6103893" zoom="14" projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" />
+        <extension type="javascript"
+            src="apps/bosco/lib/chartjs-3.7.1/Chart.min.js"
+            usededby="cad.js" />
+        <extension type="javascript"
+            src="apps/bosco/lib/highcharts/highstock.js" />
+    </extensions>
+    <mapoptions maxzoom="19"
+        projection="EPSG:3857"
+        center="-251671.3475115354, 6140436.611135553"
+        zoom="14"
+        projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" />
 
     <baselayers style="gallery">
-        <baselayer  type="OSM" id="positron" label="Positron" title="Carto" thumbgallery="img/basemap/positron.png"
-            url="http://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20"
-            visible="false" attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>" />
-        <baselayer  type="OSM" id="osm1" label="OpenStreetMap" title="OpenStreetMap" thumbgallery="img/basemap/osm.png"
+        <baselayer type="OSM"
+            id="positron"
+            label="Positron"
+            title="Carto"
+            thumbgallery="img/basemap/positron.png"
+            url="http://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+            maxzoom="20" visible="false"
+            attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>" />
+        <baselayer type="OSM" id="osm1"
+            label="OpenStreetMap"
+            title="OpenStreetMap"
+            thumbgallery="img/basemap/osm.png"
             url="http://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution="© MapQuest. Données : les contributeurs d'&lt;a href='https://www.openstreetmap.org/' target='_blank'>OpenStreetMap &lt;/a>,  &lt;a href='https://www.openstreetmap.org/copyright' target='_blank'>ODbL &lt;/a>" visible="false"/>
-		<baselayer visible="false" id="osm_google"
-			thumbgallery="img/basemap/osm_google.png" title="GéoBretagne" label="OpenStreetMap GéoBretagne" type="WMS" url="https://osm.geobretagne.fr/gwc01/service/wms" layers="osm:google" format="image/png"
-            attribution="GéoBretagne. Données : les contributeurs d'&lt;a href='https://www.openstreetmap.org/' target='_blank'>OpenStreetMap &lt;/a>,  &lt;a href='https://www.openstreetmap.org/copyright' target='_blank'>ODbL &lt;/a>"/>
-	    <baselayer type="WMTS" id="ortho1" label="Photo aérienne actuelle" title="GéoPortail" maxscale="1000"
-		    thumbgallery="img/basemap/ortho.jpg" url="https://wxs.ign.fr/essentiels/geoportail/wmts"
-		    layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" visible="true" fromcapacity="false"
-		    attribution="'&lt;a href='https://www.geoportail.gouv.fr/' target='_blank'>'&lt;img src='https://www.geoportail.gouv.fr/assets/images/logo-geoportail.svg'>'&lt;/a>"
-		    style="normal" matrixset="PM" maxzoom="22"/>
+            attribution="© MapQuest. Données : les contributeurs d'&lt;a href='https://www.openstreetmap.org/' target='_blank'>OpenStreetMap &lt;/a>,  &lt;a href='https://www.openstreetmap.org/copyright' target='_blank'>ODbL &lt;/a>"
+            visible="false" />
+        <baselayer visible="false"
+            id="osm_google"
+            thumbgallery="img/basemap/osm_google.png"
+            title="GéoBretagne"
+            label="OpenStreetMap GéoBretagne"
+            type="WMS"
+            url="https://osm.geobretagne.fr/gwc01/service/wms"
+            layers="osm:google"
+            format="image/png"
+            attribution="GéoBretagne. Données : les contributeurs d'&lt;a href='https://www.openstreetmap.org/' target='_blank'>OpenStreetMap &lt;/a>,  &lt;a href='https://www.openstreetmap.org/copyright' target='_blank'>ODbL &lt;/a>" />
+        <baselayer type="WMTS"
+            id="ortho1"
+            label="Photo aérienne actuelle"
+            title="GéoPortail"
+            maxscale="1000"
+            thumbgallery="img/basemap/ortho.jpg"
+            url="https://wxs.ign.fr/essentiels/geoportail/wmts"
+            layers="ORTHOIMAGERY.ORTHOPHOTOS"
+            format="image/jpeg"
+            visible="true"
+            fromcapacity="false"
+            attribution="'&lt;a href='https://www.geoportail.gouv.fr/' target='_blank'>'&lt;img src='https://www.geoportail.gouv.fr/assets/images/logo-geoportail.svg'>'&lt;/a>"
+            style="normal"
+            matrixset="PM"
+            maxzoom="22" />
     </baselayers>
-    <proxy url=""/>
-    <olscompletion url="https://api-adresse.data.gouv.fr/search/" type="ban" attribution="La recherche d'adresse est un service proposé par la BAN"/>
-    <searchparameters bbox="false" localities="true" features="false" />
+    <proxy url="" />
+    <olscompletion
+        url="https://api-adresse.data.gouv.fr/search/"
+        type="ban"
+        attribution="La recherche d'adresse est un service proposé par la BAN" />
+    <searchparameters bbox="false"
+        localities="true"
+        features="false" />
 
     <themes>
-        <theme id="sensors" name="Données temporelles">
-            <layer
-                id="sensorthings"
+        <theme id="sensors"
+            name="Données temporelles">
+            <layer id="sensorthings"
                 type="sensorthings"
                 name="Chroniques de l'humidité des Parcelles "
                 visible="true"
                 expanded="true"
-		        legendurl="https://geosas.fr/img/bosco/centroide.png"
+                legendurl="https://geosas.fr/img/bosco/centroide.png"
                 queryable="true"
                 url="https://frost.geosas.fr/bosco/v1.0"
                 infopanel="bottom-panel"
                 customstyle='{"point":{"radius": 5, "fill": { "color": "yellow"}, "stroke":{"color": "black", "width": 2}}}'
                 style="sensorPoint"
+                top="1500" srs="4326"
+                selector="id,name,description"
+                defaultSensor=""
+                datastreamsfilter="name,description,id,unitOfMeasurement"
+                multidatastreamsfilter="name,description,id,unitOfMeasurements">
+                <template
+                    url="apps/bosco/templates/sensor-highcharts.mst"></template>
+            </layer>
+        </theme>
+        <theme
+            name="Données géographiques"
+            collapsed="false"
+            id="habitant"
+            icon="fas fa-users">
+            <layer id="rpg_bosco"
+                name="Contour des parcelles RPG"
+                type="wms" tiled="true"
+                vectorlegend="true"
+                url="https://geosas.fr/geoserver/bosco/ows"
+                queryable="true"
+                visible="true"
+                searchable="true"
+                sensorthingsfield="thingsUrl"
+                sensorthingsid="thing_id"
+                infoformat="application/vnd.ogc.gml"
+                sensorserviceurl="https://frost.geosas.fr/bosco/v1.0"
+                sensorsurlfield="service_url"
                 top="1500"
                 srs="4326"
                 selector="id,name,description"
                 datastreamsfilter="name,description,id,unitOfMeasurement"
-                multidatastreamsfilter="name,description,id,unitOfMeasurements">
-                <template url="apps/bosco/templates/sensor-highcharts.mst"></template>
+                multidatastreamsfilter="name,description,id,unitOfMeasurements"
+                attribution="Source: UMR TETIS AgroParisTech CIRAD CNRS INRAE"
+                infopanel="bottom-panel"
+                >
+                <template
+                    url="apps/bosco/templates/sensor-wms-highcharts.mst"></template>
             </layer>
-        </theme>
-        <theme name="Données géographiques"  collapsed="false" id="habitant" icon="fas fa-users">
-            <layer id="rpg_bosco"
-                name="Contour des parcelles RPG"
-                type="wms"
-		tiled="true"
-                vectorlegend="true"
-                url="https://geosas.fr/geoserver/bosco/ows"
-                queryable="false"
-                visible="true"
-                searchable="true"
-                attribution="Source: UMR TETIS AgroParisTech CIRAD CNRS INRAE">
-	    </layer>
             <layer id="humidite_bzh"
                 name="Humidité des sols 2017/2022 (%)"
-                type="wms"
-		tiled="true"
+                type="wms" tiled="true"
                 vectorlegend="true"
-		timefilter="true"
-		timecontrol="calendar"
-		timemin="2017-01-03"
-		timemax="2022-11-11"
+                timefilter="true"
+                timecontrol="calendar"
+                infoformat="application/vnd.ogc.gml"
+                timemin="2017-01-03"
+                timemax="2022-11-11"
                 url="https://geosas.fr/geoserver/bosco/ows"
-		    metadata="https://geosas.fr/geonetwork/srv/fre/catalog.search#/metadata/61e08cd1-d24d-457d-a08e-98ff796627ab"
+                metadata="https://geosas.fr/geonetwork/srv/fre/catalog.search#/metadata/61e08cd1-d24d-457d-a08e-98ff796627ab"
                 metadata-csw="https://geosas.fr/geonetwork/srv/fre/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;elementSetName=full&amp;ID&amp;ID=61e08cd1-d24d-457d-a08e-98ff796627ab"
                 queryable="false"
-                visible="true"
+                visible="false"
                 searchable="true"
                 attribution="Source: UMR TETIS AgroParisTech CIRAD CNRS INRAE">
             </layer>
-		</theme>
+        </theme>
 
     </themes>
 </config>
