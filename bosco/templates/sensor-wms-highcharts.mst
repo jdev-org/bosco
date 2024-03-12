@@ -56,7 +56,7 @@
            },
            plotOptions: {
                series: {
-                    showInNavigator: true
+                    showInNavigator: true,
                }
            },
            xAxis : {
@@ -142,5 +142,11 @@
             });
         })
     }
+    // change layer date on chart click
+    container.addEventListener('click', e => {
+        const value = e?.point?.y;
+        const formatDate = Highcharts.dateFormat('%Y-%m-%d', e?.point?.x);
+        mviewer.setLayerTime("humidite_bzh", formatDate);
+    });
     </script>
 {{/features}}
