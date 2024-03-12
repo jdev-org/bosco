@@ -147,6 +147,7 @@
         const value = e?.point?.y;
         const formatDate = Highcharts.dateFormat('%Y-%m-%d', e?.point?.x);
         mviewer.setLayerTime("humidite_bzh", formatDate);
+        document.getElementById("humidite_bzh-layer-timefilter").value = formatDate;
     });
     </script>
 {{/features}}
