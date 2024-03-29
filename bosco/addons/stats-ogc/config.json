@@ -1,0 +1,12 @@
+{
+    "type": "module",
+    "js": [
+        "js/main.js"
+    ],
+    "css": [],
+    "html": "stats-ogc.html",
+    "target": "page-content-wrapper",
+    "options": {
+        "bosco": {}
+    }
+}
