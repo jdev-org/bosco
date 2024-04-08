@@ -51,6 +51,7 @@ class Request {
     }
     const bodyParams = {
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -63,8 +64,10 @@ class Request {
     const request = await this.request(bodyParams);
     const result = await request.json();
     this.resultJSON = result;
+    console.log(result);
     if (this.process) {
-      this.process();
+      console.log(this.process);
+      this.process(result);
     }
   };
 }

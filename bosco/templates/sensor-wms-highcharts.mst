@@ -1,12 +1,24 @@
 {{#features}}
-	<li id="{{feature_ol_uid}}" class="inventaire item" style="height: 330px;">
+	<li id="{{feature_ol_uid}}" class="inventaire item el-{{feature_ol_uid}}" style="height: 330px; overflow:auto;">
         {{#observations}}
             <p>
                 <b>Streams sélectionnés : </b> {{streamsNames}}
             </p>
         {{/observations}}
-        <div class="chart-container" id="chart-container" style="position: relative; margin: auto; height: 250; width:80vw">
-            <canvas id="chart-{{feature_ol_uid}}"></canvas>
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button type="button" target="chart" class="btn btn-default activate pinfos">Chronologie</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" target="global" class="btn btn-default pinfos">Infos. Parcelle</button>
+            </div>
+        </div>
+        <div class="sections">
+            <div class="sub-section chart-container chart visible" id="chart-container-{{feature_ol_uid}}" style="width: 100%">
+                <canvas id="chart-{{feature_ol_uid}}"></canvas>
+            </div>
+            <div class="sub-section global-container">
+            </div>
         </div>
     </li>
     <script>
@@ -29,9 +41,7 @@
     let multidatastreams = props.sensorthings.multidatastreams;
     let thing = props.sensorthings.thing;
 
-    var container = document.getElementById({{feature_ol_uid}});
-
-    console.log("Console...");
+    var container = document.getElementById("chart-container-{{feature_ol_uid}}");
 
     // newChart function
     function newChart(title, subtitle) {
@@ -60,7 +70,13 @@
                }
            },
            xAxis : {
-               type: 'datetime'
+               type: 'datetime',
+                labels: {
+                formatter() {
+                    return ' year'
+                }
+                },
+                
            }
        })
        return chart ;
@@ -143,11 +159,133 @@
         })
     }
     // change layer date on chart click
-    container.addEventListener('click', e => {
+    document.getElementById("chart-container-{{feature_ol_uid}}").addEventListener('click', e => {
+        const layerTimeFilter = document.getElementById("humidite_bzh-layer-timefilter");
         const value = e?.point?.y;
         const formatDate = Highcharts.dateFormat('%Y-%m-%d', e?.point?.x);
-        mviewer.setLayerTime("humidite_bzh", formatDate);
-        document.getElementById("humidite_bzh-layer-timefilter").value = formatDate;
+        if(formatDate && layerTimeFilter) {
+            mviewer.setLayerTime("humidite_bzh", formatDate);
+            layerTimeFilter.value = formatDate;
+        }
     });
+
+    // stats ogc
+    const sta = "https://api.geosas.fr/stats-ogc/processes/sta-aggregate/execution";
+    const statsOGC = mviewer.customComponents["stats-ogc"];
+    const paramsStats = {
+        "aggregation": "mean",
+        "echelle": "year",
+        "format": "json",
+        "url_sensorthings": "https://frost.geosas.fr/bosco/v1.0/Datastreams(3)",
+        "year_etude": 2021
+    };
+
+    const nameRequestStat = "{{feature_ol_uid}}-stat";
+    //mviewer.customComponents["stats-ogc"].createRequests(nameRequestStat, {}, sta, params);
+
+
+    // stats-ogc culture by year
+    const nameRequestCulture = "{{feature_ol_uid}}-culture";
+    const serviceCulture = "https://api.geosas.fr/stats-ogc/processes/edr-aggregate/execution";
+    const paramsCultureByYear = {
+        "aggregation": "mode",
+        "datetime": "2017-01-01/2022-01-01",
+        "url_edr": "https://api.geosas.fr/edr/collections/RPG-Raster"
+    };
+    const selectLayer = mviewer.getMap().getLayers().getArray().filter(x => x.get("mviewerid") === "selectoverlay")[0];
+    let geometry = null;
+    if(selectLayer && selectLayer.getSource().getFeatures()) {
+        let writer = new ol.format.GeoJSON();
+        let selectedFeatures = selectLayer.getSource().getFeatures();
+        // geometry = writer.writeGeometry(selectedFeatures[0].getGeometry());
+        // geometry = writer.writeFeatures(selectedFeatures);
+
+        geometry = {
+            "crs": {
+                "properties": {
+                "name": "urn:ogc:def:crs:EPSG::2154"
+                },
+                "type": "name"
+            },
+            "features": [
+                {
+                "geometry": {
+                    "coordinates": [
+                    [
+                        [
+                        165189.86264997642,
+                        6799939.058717679
+                        ],
+                        [
+                        165189.86264997642,
+                        6800198.385465654
+                        ],
+                        [
+                        165371.39137355742,
+                        6800198.385465654
+                        ],
+                        [
+                        165371.39137355742,
+                        6799939.058717679
+                        ],
+                        [
+                        165189.86264997642,
+                        6799939.058717679
+                        ]
+                    ]
+                    ],
+                    "type": "Polygon"
+                },
+                "properties": {},
+                "type": "Feature"
+                }
+            ],
+            "name": "parcel",
+            "type": "FeatureCollection"
+        }
+    }
+    mviewer.customComponents["stats-ogc"].createRequests(nameRequestCulture, geometry, serviceCulture, paramsCultureByYear);
+    const req =  mviewer.customComponents["stats-ogc"].getRequests(nameRequestCulture);
+    function getKeyByValue(object, value) {
+        return Object.keys(object).find(key => object[key] === value);
+    }
+    const onReq = (r) => {
+        // years
+        const years = _.get(r, "response.domain.axes.t.values");
+        const cultureCodes = _.get(r, "response.ranges.code_groupe.values");
+        const culturesIdByCode = _.get(r, "response.parameters.code_groupe.categoryEncoding");
+        const culturesNames = _.get(r, "response.parameters.code_groupe.observedProperty.categories");
+        const cultureByYear = years.map((y,i) => {
+            const code = cultureCodes[i];
+            const year = y;
+            const cultureId = getKeyByValue(culturesIdByCode, code);
+            const cultureInfos = culturesNames.filter(culture => culture.id === cultureId)[0];
+            return {...cultureInfos, year, code};
+        });
+    }
+    req.setProcess(onReq);
+    req.requestJson();
     </script>
+
+    <script>
+    // button select
+    document.querySelectorAll(".el-{{feature_ol_uid}} .pinfos").forEach(x => {
+        x.addEventListener("click", ({target}) => {
+            document.querySelectorAll(".el-{{feature_ol_uid}} .pinfos").forEach(z => z.classList.remove("activate"));
+            target.classList.add("activate");
+            const panel = document.querySelectorAll(".activate")[0].attributes.target.value;
+            document.querySelectorAll(".sub-section").forEach(e => {e.style.display="none"});
+            document.querySelectorAll(".sub-section panel").style.display="";
+        })
+    })
+    </script>
+    <style>
+    .pinfos {
+        border: 1px solid rgba(69,90,100, 0.2);
+    }
+    .pinfos.activate {
+        background-color: #455a64;
+        color: white;
+    }
+    </style>
 {{/features}}

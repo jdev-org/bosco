@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <application
+        id="bosco"
         title="Humidité de sols de surface par satellite - Projet BOSCO"
         mouseposition="false" logo=""
         help="apps/bosco/mviewer_help.html"
@@ -10,10 +11,8 @@
         togglealllayersfromtheme="true" />
     <extensions>
         <extension type="javascript"
-            src="apps/bosco/lib/chartjs-3.7.1/Chart.min.js"
-            usededby="cad.js" />
-        <extension type="javascript"
             src="apps/bosco/lib/highcharts/highstock.js" />
+        <extension type="component" id="stats-ogc" path="apps/bosco/addons"/>
     </extensions>
     <mapoptions maxzoom="19"
         projection="EPSG:3857"
@@ -78,7 +77,7 @@
             <layer id="sensorthings"
                 type="sensorthings"
                 name="Chroniques de l'humidité des Parcelles "
-                visible="true"
+                visible="false"
                 expanded="true"
                 legendurl="https://geosas.fr/img/bosco/centroide.png"
                 queryable="true"
@@ -112,7 +111,6 @@
                 sensorthingsid="thing_id"
                 infoformat="application/vnd.ogc.gml"
                 sensorserviceurl="https://frost.geosas.fr/bosco/v1.0"
-                sensorsurlfield="service_url"
                 top="1500"
                 srs="4326"
                 selector="id,name,description"
@@ -129,7 +127,6 @@
                 type="wms" tiled="true"
                 vectorlegend="true"
                 infoformat="application/vnd.ogc.gml"
-
                 timecontrol="calendar"
                 timemin="2017-01-03"
                 timemax="2022-11-11"
@@ -140,7 +137,7 @@
                 metadata="https://geosas.fr/geonetwork/srv/fre/catalog.search#/metadata/61e08cd1-d24d-457d-a08e-98ff796627ab"
                 metadata-csw="https://geosas.fr/geonetwork/srv/fre/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;elementSetName=full&amp;ID&amp;ID=61e08cd1-d24d-457d-a08e-98ff796627ab"
                 queryable="false"
-                visible="false"
+                visible="true"
                 searchable="true"
                 attribution="Source: UMR TETIS AgroParisTech CIRAD CNRS INRAE">
             </layer>
