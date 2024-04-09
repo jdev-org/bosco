@@ -64,9 +64,7 @@ class Request {
     const request = await this.request(bodyParams);
     const result = await request.json();
     this.resultJSON = result;
-    console.log(result);
     if (this.process) {
-      console.log(this.process);
       this.process(result);
     }
   };
