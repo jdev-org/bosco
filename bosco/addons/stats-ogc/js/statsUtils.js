@@ -7,7 +7,7 @@ export const requestStats = (params, uuidContainer, parcelleId) => {
         "aggregation": "mean",
         "echelle": "year",
         "format": "json",
-        "url_sensorthings": "https://frost.geosas.fr/bosco/v1.0/Datastreams(3)",
+        "url_sensorthings": `https://frost.geosas.fr/bosco/v1.0/Datastreams(3)`,
         "year_etude": 2022,
         ...params
       };
@@ -22,7 +22,8 @@ export const requestStats = (params, uuidContainer, parcelleId) => {
 
         createChart(series, uuidContainer, {
             title: {
-                text: "Soil Moisture climatology 2017-2022, parcel " + parcelleId
+                // text: `Soil Moisture climatology (${postParams.year_etude})`
+                text: "Soil Moisture climatology 2017-2022"
             }
         })
     }
@@ -41,6 +42,10 @@ export const createChart = (series, container, additionalConfig) => {
         },
         chart: {
             type: 'line'
+        },
+        legend: {
+            align: 'center',
+            verticalAlign: 'top',
         },
         xAxis : {
             categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',

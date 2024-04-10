@@ -18,20 +18,22 @@
                 <canvas id="chart-{{feature_ol_uid}}"></canvas>
             </div>
             <div class="sub-section global-container">
-                <h4>Parcelle {{idp}}</h4>
-                <div class="flexible">
+                <h4>Informations sur la parcelle : {{idp}}</h4>
+                <div class="alert alert-warning" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    Vous devez commencer par sélectionner une année (cliquez sur la graphique).
+                </div>
+                <div class="flexible" style="display:none;">
                     <div class="container-chart" id="cn-chart-{{feature_ol_uid}}"></div>
                     <div class="card-infos">
-                        <div class="template-component mb-2"
-                        style="margin: 12px 0px;display:flex; align-items:center; color:grey; justify-content:flex-start;padding: 14px;border-radius: 5px;width: fit-content;"
-                        >
-                            <div style="font-size: 40px;"><i class="bi bi-123"></i></div>
-                            <div style="line-height: 1.2;padding: 0px 15px;">
-                                <div id="year-{{feature_ol_uid}}" style="font-size: 24px;font-weight: bold;">2024</div>
-                            </div>
+                        <div class="number">
+                            <object class="svg" data="apps/bosco/templates/img/calendar.svg"></object>
+                            <p class="title-number">
+                                <span id="year-{{feature_ol_uid}}"></span>
+                            </p>
                         </div>
                         <div class="number">
-                            <img src="apps/bosco/templates/img/plant.svg" style="width:100%;">
+                            <object class="svg" data="apps/bosco/templates/img/plant.svg"></object>
                             <p class="title-number">
                                 <span id="cn-{{feature_ol_uid}}"></span>
                             </p>
@@ -192,15 +194,17 @@
             mviewer.setLayerTime("humidite_bzh", formatDate);
             layerTimeFilter.value = formatDate;
             const year = new Date(formatDate).getFullYear();
-            console.log("CLICKED");
             // requestCulture(year);
             statsOGC.utils.requestCulture(year, {}, olUid)
             statsOGC.utils.requestStats({
-                year_etude: year
+                year_etude: year,
+                url_sensorthings: `https://frost.geosas.fr/bosco/v1.0/Datastreams(3)`
             },
             "cn-chart-{{feature_ol_uid}}",
             "{{idp}}"
             );
+            document.querySelector(".global-container .flexible").style.display = "";
+            document.querySelector(".global-container .alert").style.display = "none"
         }
     });
     </script>
@@ -236,18 +240,38 @@
         justify-content: flex-start;
         align-content: center;
     }
-    .number img{
-        max-width: 100px;
+    .number .svg{
+        max-width: 50px;
+    }
+    .number {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     #bottom-panel.active{
         height: 480px !important;
 
     }
-
+    .global-container .alert {
+        margin-top: 20px;
+    }
+    .card-infos {
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
     .container-chart{
         height: 350px;
         max-width: 2000px;
         min-width: 900px;
+    }
+    .number path {
+        fill: red;
+    }
+    .title-number {
+        font-size: 18px
     }
     </style>
 {{/features}}
