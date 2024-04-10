@@ -44,11 +44,7 @@ class Request {
     }
   };
 
-  requestJson = async () => {
-    if (!this.geometry) {
-      alert("Geometry missing !");
-      return;
-    }
+  requestJson = async () => {    
     const bodyParams = {
       headers: {
         Accept: "application/json",

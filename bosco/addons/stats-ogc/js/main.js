@@ -2,12 +2,14 @@ import Request from "./request.js";
 
 import * as utils from "./utils.js";
 import * as rpgUtils from "./rpgUtils.js";
+import * as statsUtils from "./statsUtils.js";
 
 const ID = "stats-ogc";
 const init = async () => {
   mviewer.customComponents["stats-ogc"].utils = {
     ...utils,
-    ...rpgUtils
+    ...rpgUtils,
+    ...statsUtils
   };
   mviewer.customComponents["stats-ogc"].requests = [];
   mviewer.customComponents["stats-ogc"].createRequests = (

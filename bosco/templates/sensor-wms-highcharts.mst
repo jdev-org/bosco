@@ -1,5 +1,5 @@
 {{#features}}
-	<li id="{{feature_ol_uid}}" class="inventaire item el-{{feature_ol_uid}}" style="height: 330px; overflow:auto;">
+	<li id="{{feature_ol_uid}}" class="inventaire item el-{{feature_ol_uid}}">
         {{#observations}}
             <p>
                 <b>Streams sélectionnés : </b> {{streamsNames}}
@@ -19,18 +19,23 @@
             </div>
             <div class="sub-section global-container">
                 <h4>Parcelle {{idp}}</h4>
-                <div class="graph">
-                </div>
-                <div class="panel panel-default col-xs-1" style="border: 0px">
-                    <div class="panel-body panel-graph" style="border: 0px">
-                        <img src="apps/bosco/templates/img/plant.svg" style="width:100%;">
-                        <p class="title-number">
-                            <span id="cn-{{feature_ol_uid}}"></span>
-                            <br>
-                            <span class="sub-number">
-                                <i> Pour l'année <span id="year-{{feature_ol_uid}}"></span></i>
-                            </span>
-                        </p>
+                <div class="flexible">
+                    <div class="container-chart" id="cn-chart-{{feature_ol_uid}}"></div>
+                    <div class="card-infos">
+                        <div class="template-component mb-2"
+                        style="margin: 12px 0px;display:flex; align-items:center; color:grey; justify-content:flex-start;padding: 14px;border-radius: 5px;width: fit-content;"
+                        >
+                            <div style="font-size: 40px;"><i class="bi bi-123"></i></div>
+                            <div style="line-height: 1.2;padding: 0px 15px;">
+                                <div id="year-{{feature_ol_uid}}" style="font-size: 24px;font-weight: bold;">2024</div>
+                            </div>
+                        </div>
+                        <div class="number">
+                            <img src="apps/bosco/templates/img/plant.svg" style="width:100%;">
+                            <p class="title-number">
+                                <span id="cn-{{feature_ol_uid}}"></span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -176,50 +181,10 @@
         })
     }
 
-    const request = (year) => {
-        // stats-ogc culture by year
-        const nameRequestCulture = "{{feature_ol_uid}}-culture";
-        const serviceCulture = "https://api.geosas.fr/stats-ogc/processes/edr-aggregate/execution";
-        const paramsCultureByYear = {
-            "aggregation": "mode",
-            "datetime": "2017-01-01/2022-01-01",
-            "url_edr": "https://api.geosas.fr/edr/collections/RPG-Raster"
-        };
-        const featuresCollection = statsOGC.utils.getSelectedFeaturesByLayerAsJson();
-        if(featuresCollection) {
-            featuresCollection.crs = {
-                properties: {
-                    //name: `urn:ogc:def:crs:${mviewer.getMap().getView().getProjection().getCode()}`
-                    name: "urn:ogc:def:crs:EPSG::3857"
-                },
-                type: "name"
-            };
-        }
-        statsOGC.createRequests(nameRequestCulture, featuresCollection, serviceCulture, paramsCultureByYear);
-        const req =  statsOGC.getRequests(nameRequestCulture);
-        const onReq = (r) => {
-            // years
-            const cultureByYear = statsOGC.utils.parseResponse(r);
-            if(!year) return;
-            let infos = cultureByYear.filter(f => {
-                const y = moment(f.year, "YYYY-MM-DD-T00-00-00Z").format("YYYY");
-                return y == year;
-            })[0];
-            console.log(infos);
-            if(infos) {
-                document.querySelector("#cn-{{feature_ol_uid}}").innerHTML = infos.label.fr;
-                document.querySelector("#year-{{feature_ol_uid}}").innerHTML = year;
-                
-            }
-            
-        }
-        req.setProcess(onReq);
-        req.requestJson();
-    }
-
 
     // change layer date on chart click
     document.getElementById("chart-container-{{feature_ol_uid}}").addEventListener('click', e => {
+        const olUid = "{{feature_ol_uid}}";
         const layerTimeFilter = document.getElementById("humidite_bzh-layer-timefilter");
         const value = e?.point?.y;
         const formatDate = Highcharts.dateFormat('%Y-%m-%d', e?.point?.x);
@@ -227,7 +192,15 @@
             mviewer.setLayerTime("humidite_bzh", formatDate);
             layerTimeFilter.value = formatDate;
             const year = new Date(formatDate).getFullYear();
-            request(year);
+            console.log("CLICKED");
+            // requestCulture(year);
+            statsOGC.utils.requestCulture(year, {}, olUid)
+            statsOGC.utils.requestStats({
+                year_etude: year
+            },
+            "cn-chart-{{feature_ol_uid}}",
+            "{{idp}}"
+            );
         }
     });
     </script>
@@ -254,6 +227,27 @@
     .pinfos.activate {
         background-color: #455a64;
         color: white;
+    }
+    .flexible {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        align-content: center;
+    }
+    .number img{
+        max-width: 100px;
+    }
+    #bottom-panel.active{
+        height: 480px !important;
+
+    }
+
+    .container-chart{
+        height: 350px;
+        max-width: 2000px;
+        min-width: 900px;
     }
     </style>
 {{/features}}
