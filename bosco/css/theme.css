@@ -1,0 +1,1041 @@
+@charset "UTF-8";
+
+/******
+	Définition des propriétés de style CSS
+	Application Bosco
+---
+******/
+
+
+/*  PARAMÈTRES GLOBAUX  */
+
+/* Imports des fonts - Poppins Family GoogleFont */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Définition des variables */
+
+:root {
+   --mycolor: #0E1247;
+   --mycolor2: #dfaa54;
+   --myfont: "Montserrat", sans-serif;
+}
+
+/* Propriétés spécifiques */
+
+.menu-toggle, #sidebar-wrapper, #btn-remove-layers, .mv-layer-remove{
+    display:none!important;
+}
+
+#wrapper {
+    padding-left: 0px!important;
+}
+
+
+.navbar-brand>img {
+   display: none !important;
+}
+
+#backgroundlayerstoolbar-gallery ul li {
+   border-radius: 0 !important;
+}
+
+
+
+/* PANEL DE CHARGEMENT */
+
+#loading-page {
+   font-family: var(--myfont) !important;
+   font-size: 15px !important;
+}
+
+/* LOADER */
+
+.mv-layer-indicator .loader {
+   border-top: 1.1em solid rgba(8, 101, 112, 0.2);
+   border-right: 1.1em solid rgba(8, 101, 112, 0.2);
+   border-bottom: 1.1em solid rgba(8, 101, 112, 0.2);
+   border-left: 1.1em solid rgb(8 101 112);
+}
+
+
+/* PAGE D'ACCUEIL */
+
+#help {
+   font-family: var(--myfont);
+}
+
+#help .logoHomeApp {
+   width: 12em;
+   margin: 0px 0px 30px;
+}
+
+
+/* Header */
+
+#help .modal-header .close {
+   font-size: 40px;
+   font-weight: 400;
+}
+
+#help .modal-header .modal-title {
+   display: none;
+}
+
+#help .modal-header {
+   padding: 40px 40px 0px 40px!important;
+}
+
+
+/* NavTab */
+
+#help .nav-tabs {
+   border-bottom: 1px solid var(--mycolor);
+}
+
+#help .nav-tabs>li.active>a {
+   color: white;
+   font-weight: 500;
+   background-color: var(--mycolor);
+   border: none;
+   border-bottom: 1px solid var(--mycolor);
+}
+
+#help .nav-tabs>li>a:hover {
+   color: white;
+   background-color: var(--mycolor);
+   border: none;
+   border-bottom: 1px solid var(--mycolor);
+   opacity: 0.8;
+}
+
+
+/* Tab content */
+
+#help .tab-content {
+   padding: 20px 0px;
+}
+
+#help .tab-pane h4 {
+   color: var(--mycolor);
+   font-size: 24px;
+}
+
+#help .tab-pane {
+   font-size: 15px;
+   color: #555;
+   text-align: justify;
+}
+
+#help .btn {
+   border-radius: 20px;
+   padding: 6px 16px;
+}
+
+#help .btn:hover {
+   opacity: 0.8;
+}
+
+#help .btn-success {
+   background-color: var(--mycolor2);
+   border: none;
+}
+
+#help .btn-info {
+   border: 1px solid var(--mycolor);
+   background: none;
+   color: var(--mycolor);
+}
+
+
+/* NAVBAR */
+
+.navbar-header.fixed-brand {
+   color: white;
+}
+
+#mv-navbar {
+   font-family: var(--myfont);
+   background-color: var(--mycolor);
+   border: none;
+   color: white;
+   height: 65px;
+   padding: 5px;
+   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 10%), 0 2px 10px 0 rgb(0 0 0 / 8%);
+}
+
+.navbar-brand.menu-toggle {
+   color: white!important;
+}
+
+.navbar-default .navbar-brand.menu-toggle:hover {
+   color: white;
+   background-color: #ffffff3b;
+   -webkit-transition: background-color 0.5s ease-out;
+   -moz-transition: background-color 0.5s ease-out;
+   -o-transition: background-color 0.5s ease-out;
+   transition: background-color 0.5s ease-out;
+   border-radius: 2px;
+}
+
+.navbar-default .navbar-brand:focus {
+   color: white;
+}
+
+
+/* Taille du logo */
+
+img.mv-logo {
+   max-height: 100px!important;
+    max-width: 400px!important;
+    margin-top: -9px!important;
+}
+
+
+/* Titre de l'application */
+
+
+.navbar-brand.mv-title {
+   padding: 15px 0px;
+   color: white!important;
+   font-weight: 500;
+}
+
+/* Barre de recherche */
+
+#searchtool {
+   margin-right: 0!important;
+   top: 0!important;
+}
+
+#searchfield {
+   border: none;
+   font-weight: 500;
+}
+
+#searchtool .btn-default {
+   background-color: #ffffff!important;
+   border-color: #ffffff00!important;
+}
+
+#searchtool .glyphicon.glyphicon-option-vertical {
+   color: var(--mycolor);
+}
+
+
+/* Résulats de la recherche */
+
+#searchresults {
+   background-color: #ffffff;
+   right: 65px!important;
+   top: 70px!important;
+   font-family: var(--myfont);
+   color: #333;
+   box-shadow: 0px 0px 30px 3px rgb(200 200 200 / 40%);
+   padding: 6px;
+}
+
+.searchresults-title {
+   font-weight: 600;
+   color: var(--mycolor);
+   margin: 0!important;
+   opacity: 0.9;
+   border-radius: 3px;
+   font-size: 14px;
+}
+
+.searchresults-title .close {
+   color: var(--mycolor);
+   text-shadow: none;
+   font-weight: 600;
+   font-size: 19px;
+}
+
+#searchresults a.list-group-item.disabled {
+   color: var(--mycolor)!important;
+   font-weight: 600;
+   font-size: 12px!important;
+}
+
+a.geoportail.list-group-item:hover {
+   background-color: #dddddd9e;
+}
+
+#searchresults a {
+   font-size: 11px!important;
+   border: none!important;
+   padding: 10px 15px!important;
+}
+
+
+/* Bouton d'accueil */
+
+
+/* Modification de l'icône */
+
+#iconhelp span {
+   /* display: none; */
+   /* content: ""; */   
+   display:none;
+   
+}
+
+#iconhelp {
+   border-radius: 0px;
+   background-color: #ffffff;
+   padding: 7px 9px 5px;
+   -webkit-transition: 0.4s ease;
+   transition: 0.4s ease;
+   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='rgba(14,18,71,1)'%3E%3Cpath d='M13 19H19V9.97815L12 4.53371L5 9.97815V19H11V13H13V19ZM21 20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V9.48907C3 9.18048 3.14247 8.88917 3.38606 8.69972L11.3861 2.47749C11.7472 2.19663 12.2528 2.19663 12.6139 2.47749L20.6139 8.69972C20.8575 8.88917 21 9.18048 21 9.48907V20Z'%3E%3C/path%3E%3C/svg%3E");   background-size: 60%;
+   background-position: center;
+   background-repeat: no-repeat;
+   width: 34px;
+   height:34px;
+}
+
+#iconhelp:hover {
+   -webkit-transform: scale(1.08);
+   transform: scale(1.08);
+}
+
+
+/* PANEL DE RECHERCHE */
+
+#parameterspanel .modal-content {
+   padding: 20px 15px;
+   border-radius: 3px!important;
+   font-family: var(--myfont);
+   font-size: 12px;
+}
+
+#parameterspanel h5.modal-title {
+   font-family: var(--myfont);
+   font-weight: 600!important;
+   font-size: 14px;
+}
+
+#parameterspanel .modal-header {
+   padding: 10px;
+}
+
+#parameterspanel .modal-body {
+   padding: 0;
+   font-family: var(--myfont);
+   font-weight: 400;
+}
+
+#parameterspanel .close {
+   color: var(--mycolor)!important;
+   opacity: 0.9!important;
+}
+
+
+/* PANEL DE PARTAGE */
+
+#sharepanel .modal-content {
+   padding: 20px 15px;
+   border-radius: 10px!important;
+   font-family: var(--myfont);
+   font-size: 12px;
+}
+
+#sharepanel h4.modal-title {
+   font-family: var(--myfont);
+   font-weight: 600!important;
+   font-size: 14px;
+   text-align: left;
+}
+
+#sharepanel .modal-header {
+   padding: 10px;
+}
+
+#sharepanel .modal-body {
+   padding: 0;
+   font-family: var(--myfont);
+   font-weight: 400;
+}
+
+#sharepanel .close {
+   color: var(--mycolor)!important;
+   opacity: 0.9!important;
+}
+
+
+/* MENU DES COUCHES */
+
+#sidebar-wrapper {
+   font-family: var(--myfont);
+   font-size: 1em;
+}
+
+#menu {
+   margin-top: 65px;
+}
+
+
+/* Thématiques */
+
+#menu>li>a {
+   padding: 12px 10px 12px 5px!important;
+   color: #777;
+   font-weight: 600;
+}
+
+
+/* Badge / Nb couches */
+
+.toggle-theme-layers .badge {
+   font-family: var(--myfont);
+   font-weight: 300!important;
+   letter-spacing: 1px;
+}
+
+#menu>li>a:hover {
+   color: white;
+   border: none;
+   background-color: #121246c7;
+   opacity: 1;
+   -webkit-transition: background-color 0.5s ease-out;
+   -moz-transition: background-color 0.5s ease-out;
+   -o-transition: background-color 0.5s ease-out;
+   transition: background-color 0.5s ease-out;
+}
+
+
+/* Thématique ouverte */
+
+#menu .opened a {
+   color: var(--mycolor);
+}
+
+
+/* Modification des paramètres par défaut / Menu thématique*/
+
+
+/* Couches */
+
+#menu .opened .nav-pills a {
+   color: #777;
+   font-weight: 400;
+}
+
+ul.nav-pills.nav-stacked {
+   padding: 0;
+}
+
+.nav-pills.nav-stacked ul a {
+   padding: 15px 0px 15px 40px !important;
+}
+
+#menu .opened .nav-pills a:hover {
+   background-color: var(--mycolor);
+   color: white!important;
+   border: none;
+}
+
+
+/* PANEL LEGENDE */
+
+#layers-container-box {
+   margin-left: 0px!important;
+   font-family: var(--myfont);
+   color: #555;
+   padding: 15px;
+   /* Modification de la taille du bloc initiale*/
+   max-width: 300px!important;
+}
+
+
+/* Header */
+
+#layers-container-box-header {
+   background-color: var(--mycolor);
+}
+
+
+/* Titre de la légende */
+
+.layerdisplay-title {
+   padding: 5px 15px!important;
+   display: flex;
+   flex-direction: row;
+   align-content: center;
+   align-items: flex-start;
+}
+
+.layerdisplay-title a {
+   font-size: 14px;
+   font-weight: 800;
+   color: var(--mycolor)!important;
+   line-height: 1.1;
+}
+
+.layerdisplay-subtitle span {
+   font-family: var(--myfont)!important;
+   font-style: normal!important;
+   font-weight: 500;
+}
+
+.layerdisplay-subtitle {
+   background-color: #9e9e9e33;
+   padding: 2px 5px;
+   border-radius: 4px;
+}
+
+/* Supprimer la couche */
+
+a.mv-layer-remove {
+   padding: 0!important;
+}
+
+
+/* Chevron vers les options */
+
+.icon-options span {
+   font-size: smaller;
+}
+
+.icon-options span:hover {
+   opacity: 0.7;
+}
+
+
+/* Options de la couche */
+
+.mv-layer-options {
+   padding: 0px 0px 0px 0px!important;
+   font-size: 12px;
+   color: #555;
+   font-size: 11px;
+}
+
+.mv-layer-options label {
+   font-weight: 500;
+   font-size: 12px;
+   margin-bottom: 10px;
+}
+
+#layers-container .mv-layer-options p {
+   padding: 0px!important;
+   color: #555;
+   font-size: 12px;
+}
+
+.mv-layer-options .row {
+   margin-bottom: 10px!important;
+}
+
+
+/* Opacité */
+
+.slider-selection {
+   background: var(--mycolor);
+   background-image: none!important;
+}
+
+.mv-layer-options .slider-track {
+   height: 4px!important;
+   margin-top: -6px!important;
+}
+
+.slider.slider-horizontal {
+   width: 95%!important;
+}
+
+.slider-handle.min-slider-handle.round {
+   background: var(--mycolor);
+   width: 12px;
+   height: 12px;
+}
+
+.slider-handle.min-slider-handle.round:hover,
+.slider-handle.min-slider-handle.round:active {
+   -webkit-box-shadow: 0px 0px 0px 4px rgba(38, 50, 57, 0.4);
+   -moz-box-shadow: 0px 0px 0px 4px rgba(38, 50, 57, 0.4);
+   box-shadow: 0px 0px 0px 4px rgba(38, 50, 57, 0.4);
+}
+
+
+/* Select */
+
+.mv-layer-options .form-control {
+   border-radius: 5px;
+    border: 1.9px solid #55555533!important;
+    color: #555!important;
+    font-size: 12px;
+    padding: 6px 4px;
+}
+
+.mv-layer-options .form-control:hover {
+   background-color: #eee;
+}
+
+
+/* Temporalité - slider */
+
+span.mv-time-player-selection {
+   color: white;
+   background-color: var(--mycolor);
+   font-size: 10px;
+   border-radius: 10px!important;
+}
+
+span.fa.mv-time-player {
+   color: var(--mycolor);
+   margin: 0px 5px;
+}
+
+.form-group-timer .slider-track-high {
+   background-color: var(--mycolor)!important;
+}
+
+.slider-tick {
+   width: 8px!important;
+   height: 8px!important;
+   background-color: var(--mycolor)!important;
+}
+
+.slider-tick.round:hover {
+   -webkit-box-shadow: 0px 0px 0px 4px rgb(38 50 57 / 40%);
+   -moz-box-shadow: 0px 0px 0px 4px rgba(38, 50, 57, 0.4);
+   box-shadow: 0px 0px 0px 4px rgb(38 50 57 / 40%);
+}
+
+.slider-tick-label-container {
+   padding-top: 2px;
+}
+
+
+/* Panel métadonnées */
+
+.popover,
+.arrow {
+   border: none!important;
+}
+
+.popover-content {
+   font-family: var(--myfont);
+   font-size: 12px;
+   padding: 20px 15px!important;
+}
+
+.popover-content p {
+   margin-bottom: 20px!important;
+}
+
+.popover-content a {
+   font-family: var(--myfont);
+   color: white;
+   background-color: var(--mycolor);
+   padding: 8px 14px;
+   border-radius: 15px;
+   font-style: normal!important;
+}
+
+.popover-content a:hover {
+   color: white!important;
+   opacity: 0.8;
+}
+
+
+/** TOOLTIP > Nom des entités au survol **/
+
+.tooltip-inner {
+   font-family: var(--myfont)!important;
+   color:white!important;
+   font-size: 12px!important;
+   padding: 8px!important;
+   border-radius: 8px!important;
+}
+
+
+/** TOOLBAR **/
+
+#zoomtoolbar {
+   top: 75px!important;
+}
+
+#toolstoolbar {
+   top: 165px!important;
+}
+
+#toolstoolbar .btn:hover,
+#zoomtoolbar .btn:hover {
+   color: var(--mycolor);
+}
+
+
+/* Mesures */
+
+#drawtoolsoptions {
+   right: 60px!important;
+   top: 165px!important;
+   box-shadow: 0px 0px 30px 3px rgb(200 200 200 / 50%);
+}
+
+#drawtoolsoptions .btn-default {
+   border-radius: 0px;
+   background-color: white;
+}
+
+#drawtoolsoptions .btn-default.active {
+   color: #333!important;
+   background-color: #ddd;
+}
+
+#drawtoolsoptions .btn-default:hover {
+   color: #333333a8;
+}
+
+
+/* FOND DE PLAN */
+
+
+/* Default */
+
+#backgroundlayersbtn {
+   box-shadow: 0px 0px 30px 3px rgb(60 60 60 / 38%)!important;
+}
+
+
+/** ATTRIBUTIONS OPENLAYERS + ECHELLE **/
+
+.ol-control button {
+   border-radius: 4px!important;
+    background-color: var(--mycolor)!important;
+    color: white!important;
+    font-size: 12px!important;
+    width: 25px!important;
+    height: 25px!important;
+    font-weight: 500!important;
+}
+
+.ol-attribution.ol-unselectable.ol-control.ol-collapsed {
+   border-radius: 4px!important;
+}
+
+.ol-attribution.ol-unselectable.ol-control {
+   padding: 0px;
+   font-family: var(--myfont);
+   box-shadow: 0px 0px 50px 3px rgb(60 60 60 / 10%)!important;
+}
+
+.ol-control button:hover,
+.ol-control button:focus {
+   opacity: 0.7;
+   background-color: var(--mycolor)!important;
+}
+
+
+/* MESSAGES ALERTES */
+
+#alerts-zone .alert {
+   margin: 20px;
+   font-family: var(--myfont);
+   background-color: var(--mycolor);
+   border: none;
+   color: white;
+}
+
+
+/* TEMPLATES */
+
+
+/* RIGHT */
+
+#right-panel .carousel-inner {
+   width: auto!important;
+}
+
+#right-panel .mv-header {
+   padding-top: 70px!important;
+}
+
+#right-panel .mv-header {
+   background-color: var(--mycolor);
+   opacity: 0.9;
+   color: white;
+   font-family: var(--myfont);
+   padding: 3px;
+   /* font-size: 11px; */
+}
+
+#right-panel .mv-header h5 {
+   font-size: 1em;
+   font-weight: 500;
+   line-height: 1.5!important;
+   margin: 0;
+   padding: 10px;
+}
+
+#right-panel .close {
+   font-weight: 300!important;
+   font-size: 20px!important;
+   right: 15px!important;
+   padding-top: 6px!important;
+}
+
+#right-panel .item.active {
+   overflow-y: auto;
+   padding-bottom: 150px!important;
+}
+
+
+/* Nav Templates */
+
+.mv-tooltip {
+   font-size: 11px;
+   opacity: 0.9;
+   font-family: var(--myfont);
+}
+
+#right-panel-selector .nav .active a {
+   border-left: var(--mycolor) 2px solid!important;
+   border: none;
+}
+
+#right-panel-selector .nav .active .fa {
+   color: var(--mycolor);
+}
+
+
+/* Item GML */
+
+#right-panel .item {
+   font-family: var(--myfont);
+   color: #555;
+   font-size: 13px;
+}
+
+#right-panel .item .gml-item-title {
+   font-size: 16px;
+   font-weight: 700;
+}
+
+
+/* Chevrons + Badge */
+
+span.badge.counter-slide {
+   font-family: var(--myfont);
+   font-weight: 400!important;
+   letter-spacing: 1px;
+}
+
+#right-panel span.counter-slide {
+   background-color: var(--mycolor);
+}
+
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right {
+   font-size: 18px!important;
+}
+
+
+/* BOTTOM-PANEL */
+
+#bottom-panel-btn .fa-chevron-down {
+   background: var(--mycolor);
+   color: #fff;
+}
+
+#bottom-panel-btn .fa-chevron-down:hover {
+   background: #05afa8;
+   color: #fff;
+}
+
+#bottom-panel .mv-header h5 {
+   font-family: var(--myfont);
+   color: var(--mycolor);
+   font-size: 14px;
+   font-weight: 600;
+}
+
+
+/* PROPRIETES SPECIFIQUES AUX MODES SIMPLIFIE, ULTRA-SIMPLIFIE & MOBILE */
+
+.xs .mv-logo {
+   display: none;
+}
+
+.xs .mv-title {
+   display: block;
+   color: white !important;
+   font-weight: 500;
+   font-size: medium;
+   width: 66%;
+   padding: 12px 0;
+   line-height: 1;
+}
+
+/* MOBILE */
+
+.xs .navbar-toggle {
+   background-color: white;
+   color: var(--mycolor);
+   border: none;
+}
+
+.xs .navbar-toggle {
+   background-color: white;
+   color: var(--mycolor);
+   border: none;
+}
+
+.xs .navbar-collapse {
+   background-color: var(--mycolor);
+   /* color: white; */
+}
+
+.xs .navbar-collapse .navbar-nav>li>a {
+   color: white;
+}
+
+.xs #mv-navbar {
+   padding: 5px 0px!important;
+}
+
+/* SIMPLIFIE */
+
+.xs.mode-s #layers-container-box-header {
+   display: none;
+}
+
+.xs.mode-s #btn-mode-su-menu {
+   width: 40px;
+   height: 40px;
+   border-radius: 10px!important;
+   background-color: var(--mycolor);
+   color: white;
+   font-size: 14px;
+   padding: 10px;
+}
+
+.xs.mode-s #btn-mode-su-menu:hover {
+   opacity: 0.9!important;
+}
+
+.xs.mode-s .modal-content {
+   border-radius: 10px!important;
+   padding: 10px!important;
+   font-family: var(--myfont);
+   background-color: #fffffff7!important;
+}
+
+.xs.mode-s .modal-title {
+   color: var(--mycolor);
+}
+
+.xs.mode-s .mv-theme {
+   color: #555;
+}
+
+.xs.mode-s .mv-theme h4 {
+   font-size: 12px!important;
+}
+
+
+/* ULTRA-SIMPLIFIE */
+
+.xs.mode-u #layers-container-box-header {
+   display: none;
+}
+
+.xs.mode-u #btn-mode-su-menu {
+   width: 40px;
+   height: 40px;
+   border-radius: 10px!important;
+   background-color: var(--mycolor);
+   color: white;
+   font-size: 14px;
+   padding: 10px;
+   top: 10px!important;
+}
+
+.xs.mode-u #searchtool {
+   top: 10px!important;
+   right: 10px!important;
+   font-family: var(--myfont);
+}
+
+.xs.mode-u #btn-mode-su-menu:hover {
+   opacity: 0.9!important;
+}
+
+.xs.mode-u .modal-content {
+   border-radius: 10px!important;
+   padding: 10px!important;
+   font-family: var(--myfont);
+   background-color: #fffffff7!important;
+}
+
+.xs.mode-u .modal-title {
+   color: var(--mycolor);
+}
+
+.xs.mode-u .mv-theme {
+   color: #555;
+}
+
+.xs.mode-u .mv-theme h4 {
+   font-size: 12px!important;
+}
+
+
+/* MOBILE */
+
+.xs.mode-d .navbar-toggle {
+   color: var(--mycolor);
+   background-color: #ffffff;
+   border: none;
+}
+
+.xs.mode-d .navbar {
+   padding: 0!important;
+}
+
+.xs.mode-d .navbar-header.fixed-brand {
+   padding: 5px;
+}
+
+.xs.mode-d .navbar-collapse {
+   background-color: var(--mycolor);
+}
+
+.xs.mode-d .mv-nav a {
+   color: white!important;
+   /* padding: 0px; */
+   font-weight: 500;
+}
+
+.xs.mode-d .modal-content {
+   border-radius: 10px!important;
+   padding: 10px!important;
+   font-family: var(--myfont);
+   background-color: #fffffff7!important;
+}
+
+.xs.mode-d .modal-title {
+   color: var(--mycolor);
+}
+
+.xs.mode-d .mv-theme {
+   color: #555;
+}
+
+.xs.mode-d .mv-theme h4 {
+   font-size: 12px!important;
+}
+
+.xs.mode-d .mv-title {
+   padding: 10px 0px!important;
+}
+
+.xs.mode-d .title-app,
+.xs.mode-d .subtitle-app {
+   font-size: 15px!important;
+}
+
+.xs.mode-d img.mv-logo {
+   max-height: 35px!important;
+}
