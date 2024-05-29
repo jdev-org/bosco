@@ -2,12 +2,12 @@
 <config>
     <application
         id="bosco"
-        title="Humidité de sols de surface par satellite - Projet BOSCO"
+        title="BOSCO - Humidité de sols de surface par satellite"
         mouseposition="false" logo=""
         help="apps/bosco/mviewer_help.html"
         measuretools="true"
         exportpng="true"
-        style="css/themes/wet_asphalt.css"
+        style="apps/bosco/css/theme.css"
         togglealllayersfromtheme="true" />
     <extensions>
         <extension type="javascript"
@@ -99,29 +99,7 @@
             collapsed="false"
             id="habitant"
             icon="fas fa-users">
-            <layer id="rpg_bosco"
-                name="Contour des parcelles RPG"
-                type="wms" tiled="true"
-                vectorlegend="true"
-                url="https://geosas.fr/geoserver/bosco/ows"
-                queryable="true"
-                visible="true"
-                searchable="true"
-                sensorthingsfield="thingsUrl"
-                sensorthingsid="thing_id"
-                infoformat="application/vnd.ogc.gml"
-                sensorserviceurl="https://frost.geosas.fr/bosco/v1.0"
-                top="1500"
-                srs="4326"
-                selector="id,name,description"
-                datastreamsfilter="name,description,id,unitOfMeasurement"
-                multidatastreamsfilter="name,description,id,unitOfMeasurements"
-                attribution="Source: UMR TETIS AgroParisTech CIRAD CNRS INRAE"
-                infopanel="bottom-panel"
-                >
-                <template
-                    url="apps/bosco/templates/sensor-wms-highcharts.mst"></template>
-            </layer>
+            
             <layer id="humidite_bzh"
                 name="Humidité des sols 2017/2022 (%)"
                 type="wms" tiled="true"
@@ -138,8 +116,33 @@
                 metadata-csw="https://geosas.fr/geonetwork/srv/fre/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;elementSetName=full&amp;ID&amp;ID=61e08cd1-d24d-457d-a08e-98ff796627ab"
                 queryable="false"
                 visible="true"
+                expanded="true"
                 searchable="true"
                 attribution="Source: UMR TETIS AgroParisTech CIRAD CNRS INRAE">
+            </layer>
+            <layer id="rpg_bosco"
+                name="Contour des parcelles RPG"
+                type="wms" tiled="true"
+                vectorlegend="true"
+                url="https://geosas.fr/geoserver/bosco/ows"
+                queryable="true"
+                visible="true"
+                showintoc="false"
+                searchable="true"
+                sensorthingsfield="thingsUrl"
+                sensorthingsid="thing_id"
+                infoformat="application/vnd.ogc.gml"
+                sensorserviceurl="https://frost.geosas.fr/bosco/v1.0"
+                top="1500"
+                srs="4326"
+                selector="id,name,description"
+                datastreamsfilter="name,description,id,unitOfMeasurement"
+                multidatastreamsfilter="name,description,id,unitOfMeasurements"
+                attribution="Source: UMR TETIS AgroParisTech CIRAD CNRS INRAE"
+                infopanel="bottom-panel"
+                >
+                <template
+                    url="apps/bosco/templates/sensor-wms-highcharts.mst"></template>
             </layer>
         </theme>
 
