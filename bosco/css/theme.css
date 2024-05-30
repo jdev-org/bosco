@@ -16,13 +16,18 @@
 /* Définition des variables */
 
 :root {
-   --mycolor: #0E1247;
-   --mycolor2: #dfaa54;
-   --myfont: "Montserrat", sans-serif;
+   --colorBosco: #0E1247;
+   --fontBosco: "Montserrat", sans-serif;
 }
 
 /* Propriétés spécifiques */
 
+/* Suppression de la couche RPG dans la légende */
+.list-group-item.mv-layer-details[data-layerid=rpg_bosco] {
+   display: none;
+}
+
+/* Suppression du menu */
 .menu-toggle, #sidebar-wrapper, #btn-remove-layers, .mv-layer-remove{
     display:none!important;
 }
@@ -40,123 +45,46 @@
    border-radius: 0 !important;
 }
 
+/* Calendar */
 
+.datepicker {
+   font-family: var(--fontBosco);
+}
+
+.datepicker table tr td.active {
+   background-color: var(--colorBosco)!important;
+   font-weight: 600;
+}
 
 /* PANEL DE CHARGEMENT */
 
 #loading-page {
-   font-family: var(--myfont) !important;
+   font-family: var(--fontBosco) !important;
    font-size: 15px !important;
+   color: var(--colorBosco)!important;
 }
 
-/* LOADER */
-
-.mv-layer-indicator .loader {
-   border-top: 1.1em solid rgba(8, 101, 112, 0.2);
-   border-right: 1.1em solid rgba(8, 101, 112, 0.2);
-   border-bottom: 1.1em solid rgba(8, 101, 112, 0.2);
-   border-left: 1.1em solid rgb(8 101 112);
-}
-
-
-/* PAGE D'ACCUEIL */
-
-#help {
-   font-family: var(--myfont);
-}
-
-#help .logoHomeApp {
-   width: 12em;
-   margin: 0px 0px 30px;
-}
-
-
-/* Header */
-
-#help .modal-header .close {
-   font-size: 40px;
-   font-weight: 400;
-}
-
-#help .modal-header .modal-title {
-   display: none;
-}
-
-#help .modal-header {
-   padding: 40px 40px 0px 40px!important;
-}
-
-
-/* NavTab */
-
-#help .nav-tabs {
-   border-bottom: 1px solid var(--mycolor);
-}
-
-#help .nav-tabs>li.active>a {
-   color: white;
-   font-weight: 500;
-   background-color: var(--mycolor);
-   border: none;
-   border-bottom: 1px solid var(--mycolor);
-}
-
-#help .nav-tabs>li>a:hover {
-   color: white;
-   background-color: var(--mycolor);
-   border: none;
-   border-bottom: 1px solid var(--mycolor);
-   opacity: 0.8;
-}
-
-
-/* Tab content */
-
-#help .tab-content {
-   padding: 20px 0px;
-}
-
-#help .tab-pane h4 {
-   color: var(--mycolor);
-   font-size: 24px;
-}
-
-#help .tab-pane {
-   font-size: 15px;
-   color: #555;
-   text-align: justify;
-}
-
-#help .btn {
-   border-radius: 20px;
-   padding: 6px 16px;
-}
-
-#help .btn:hover {
-   opacity: 0.8;
-}
-
-#help .btn-success {
-   background-color: var(--mycolor2);
-   border: none;
-}
-
-#help .btn-info {
-   border: 1px solid var(--mycolor);
-   background: none;
-   color: var(--mycolor);
+.single4 {
+   border: 6px solid #121246!important;
+   border-top-color: #121246!important;
+   width: 35px!important;
+   height: 35px!important;
+   border-bottom-color: #12124600!important;
 }
 
 
 /* NAVBAR */
+#legend-modal {
+   font-family: var(--fontBosco);
+}
 
 .navbar-header.fixed-brand {
    color: white;
 }
 
 #mv-navbar {
-   font-family: var(--myfont);
-   background-color: var(--mycolor);
+   font-family: var(--fontBosco);
+   background-color: var(--colorBosco);
    border: none;
    color: white;
    height: 65px;
@@ -198,7 +126,7 @@ img.mv-logo {
 .navbar-brand.mv-title {
    padding: 15px 0px;
    color: white!important;
-   font-weight: 500;
+   font-weight: 700;
 }
 
 /* Barre de recherche */
@@ -219,7 +147,7 @@ img.mv-logo {
 }
 
 #searchtool .glyphicon.glyphicon-option-vertical {
-   color: var(--mycolor);
+   color: var(--colorBosco);
 }
 
 
@@ -229,7 +157,7 @@ img.mv-logo {
    background-color: #ffffff;
    right: 65px!important;
    top: 70px!important;
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    color: #333;
    box-shadow: 0px 0px 30px 3px rgb(200 200 200 / 40%);
    padding: 6px;
@@ -237,7 +165,7 @@ img.mv-logo {
 
 .searchresults-title {
    font-weight: 600;
-   color: var(--mycolor);
+   color: var(--colorBosco);
    margin: 0!important;
    opacity: 0.9;
    border-radius: 3px;
@@ -245,14 +173,14 @@ img.mv-logo {
 }
 
 .searchresults-title .close {
-   color: var(--mycolor);
+   color: var(--colorBosco);
    text-shadow: none;
    font-weight: 600;
    font-size: 19px;
 }
 
 #searchresults a.list-group-item.disabled {
-   color: var(--mycolor)!important;
+   color: var(--colorBosco)!important;
    font-weight: 600;
    font-size: 12px!important;
 }
@@ -304,12 +232,12 @@ a.geoportail.list-group-item:hover {
 #parameterspanel .modal-content {
    padding: 20px 15px;
    border-radius: 3px!important;
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    font-size: 12px;
 }
 
 #parameterspanel h5.modal-title {
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    font-weight: 600!important;
    font-size: 14px;
 }
@@ -320,12 +248,12 @@ a.geoportail.list-group-item:hover {
 
 #parameterspanel .modal-body {
    padding: 0;
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    font-weight: 400;
 }
 
 #parameterspanel .close {
-   color: var(--mycolor)!important;
+   color: var(--colorBosco)!important;
    opacity: 0.9!important;
 }
 
@@ -335,12 +263,12 @@ a.geoportail.list-group-item:hover {
 #sharepanel .modal-content {
    padding: 20px 15px;
    border-radius: 10px!important;
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    font-size: 12px;
 }
 
 #sharepanel h4.modal-title {
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    font-weight: 600!important;
    font-size: 14px;
    text-align: left;
@@ -352,12 +280,12 @@ a.geoportail.list-group-item:hover {
 
 #sharepanel .modal-body {
    padding: 0;
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    font-weight: 400;
 }
 
 #sharepanel .close {
-   color: var(--mycolor)!important;
+   color: var(--colorBosco)!important;
    opacity: 0.9!important;
 }
 
@@ -365,7 +293,7 @@ a.geoportail.list-group-item:hover {
 /* MENU DES COUCHES */
 
 #sidebar-wrapper {
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    font-size: 1em;
 }
 
@@ -386,7 +314,7 @@ a.geoportail.list-group-item:hover {
 /* Badge / Nb couches */
 
 .toggle-theme-layers .badge {
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    font-weight: 300!important;
    letter-spacing: 1px;
 }
@@ -406,7 +334,7 @@ a.geoportail.list-group-item:hover {
 /* Thématique ouverte */
 
 #menu .opened a {
-   color: var(--mycolor);
+   color: var(--colorBosco);
 }
 
 
@@ -429,7 +357,7 @@ ul.nav-pills.nav-stacked {
 }
 
 #menu .opened .nav-pills a:hover {
-   background-color: var(--mycolor);
+   background-color: var(--colorBosco);
    color: white!important;
    border: none;
 }
@@ -439,7 +367,7 @@ ul.nav-pills.nav-stacked {
 
 #layers-container-box {
    margin-left: 0px!important;
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    color: #555;
    padding: 15px;
    /* Modification de la taille du bloc initiale*/
@@ -450,7 +378,7 @@ ul.nav-pills.nav-stacked {
 /* Header */
 
 #layers-container-box-header {
-   background-color: var(--mycolor);
+   background-color: var(--colorBosco);
 }
 
 
@@ -467,12 +395,12 @@ ul.nav-pills.nav-stacked {
 .layerdisplay-title a {
    font-size: 14px;
    font-weight: 800;
-   color: var(--mycolor)!important;
+   color: var(--colorBosco)!important;
    line-height: 1.1;
 }
 
 .layerdisplay-subtitle span {
-   font-family: var(--myfont)!important;
+   font-family: var(--fontBosco)!important;
    font-style: normal!important;
    font-weight: 500;
 }
@@ -530,7 +458,7 @@ a.mv-layer-remove {
 /* Opacité */
 
 .slider-selection {
-   background: var(--mycolor);
+   background: var(--colorBosco);
    background-image: none!important;
 }
 
@@ -544,7 +472,7 @@ a.mv-layer-remove {
 }
 
 .slider-handle.min-slider-handle.round {
-   background: var(--mycolor);
+   background: var(--colorBosco);
    width: 12px;
    height: 12px;
 }
@@ -576,24 +504,24 @@ a.mv-layer-remove {
 
 span.mv-time-player-selection {
    color: white;
-   background-color: var(--mycolor);
+   background-color: var(--colorBosco);
    font-size: 10px;
    border-radius: 10px!important;
 }
 
 span.fa.mv-time-player {
-   color: var(--mycolor);
+   color: var(--colorBosco);
    margin: 0px 5px;
 }
 
 .form-group-timer .slider-track-high {
-   background-color: var(--mycolor)!important;
+   background-color: var(--colorBosco)!important;
 }
 
 .slider-tick {
    width: 8px!important;
    height: 8px!important;
-   background-color: var(--mycolor)!important;
+   background-color: var(--colorBosco)!important;
 }
 
 .slider-tick.round:hover {
@@ -615,7 +543,7 @@ span.fa.mv-time-player {
 }
 
 .popover-content {
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    font-size: 12px;
    padding: 20px 15px!important;
 }
@@ -625,9 +553,9 @@ span.fa.mv-time-player {
 }
 
 .popover-content a {
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    color: white;
-   background-color: var(--mycolor);
+   background-color: var(--colorBosco);
    padding: 8px 14px;
    border-radius: 15px;
    font-style: normal!important;
@@ -642,7 +570,7 @@ span.fa.mv-time-player {
 /** TOOLTIP > Nom des entités au survol **/
 
 .tooltip-inner {
-   font-family: var(--myfont)!important;
+   font-family: var(--fontBosco)!important;
    color:white!important;
    font-size: 12px!important;
    padding: 8px!important;
@@ -662,7 +590,7 @@ span.fa.mv-time-player {
 
 #toolstoolbar .btn:hover,
 #zoomtoolbar .btn:hover {
-   color: var(--mycolor);
+   color: var(--colorBosco);
 }
 
 
@@ -703,7 +631,7 @@ span.fa.mv-time-player {
 
 .ol-control button {
    border-radius: 4px!important;
-    background-color: var(--mycolor)!important;
+    background-color: var(--colorBosco)!important;
     color: white!important;
     font-size: 12px!important;
     width: 25px!important;
@@ -717,14 +645,14 @@ span.fa.mv-time-player {
 
 .ol-attribution.ol-unselectable.ol-control {
    padding: 0px;
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    box-shadow: 0px 0px 50px 3px rgb(60 60 60 / 10%)!important;
 }
 
 .ol-control button:hover,
 .ol-control button:focus {
    opacity: 0.7;
-   background-color: var(--mycolor)!important;
+   background-color: var(--colorBosco)!important;
 }
 
 
@@ -732,8 +660,8 @@ span.fa.mv-time-player {
 
 #alerts-zone .alert {
    margin: 20px;
-   font-family: var(--myfont);
-   background-color: var(--mycolor);
+   font-family: var(--fontBosco);
+   background-color: var(--colorBosco);
    border: none;
    color: white;
 }
@@ -753,10 +681,10 @@ span.fa.mv-time-player {
 }
 
 #right-panel .mv-header {
-   background-color: var(--mycolor);
+   background-color: var(--colorBosco);
    opacity: 0.9;
    color: white;
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    padding: 3px;
    /* font-size: 11px; */
 }
@@ -787,23 +715,23 @@ span.fa.mv-time-player {
 .mv-tooltip {
    font-size: 11px;
    opacity: 0.9;
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
 }
 
 #right-panel-selector .nav .active a {
-   border-left: var(--mycolor) 2px solid!important;
+   border-left: var(--colorBosco) 2px solid!important;
    border: none;
 }
 
 #right-panel-selector .nav .active .fa {
-   color: var(--mycolor);
+   color: var(--colorBosco);
 }
 
 
 /* Item GML */
 
 #right-panel .item {
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    color: #555;
    font-size: 13px;
 }
@@ -817,13 +745,13 @@ span.fa.mv-time-player {
 /* Chevrons + Badge */
 
 span.badge.counter-slide {
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    font-weight: 400!important;
    letter-spacing: 1px;
 }
 
 #right-panel span.counter-slide {
-   background-color: var(--mycolor);
+   background-color: var(--colorBosco);
 }
 
 .carousel-control .glyphicon-chevron-left,
@@ -835,7 +763,7 @@ span.badge.counter-slide {
 /* BOTTOM-PANEL */
 
 #bottom-panel-btn .fa-chevron-down {
-   background: var(--mycolor);
+   background: var(--colorBosco);
    color: #fff;
 }
 
@@ -845,8 +773,8 @@ span.badge.counter-slide {
 }
 
 #bottom-panel .mv-header h5 {
-   font-family: var(--myfont);
-   color: var(--mycolor);
+   font-family: var(--fontBosco);
+   color: #ffffff;
    font-size: 14px;
    font-weight: 600;
 }
@@ -872,18 +800,18 @@ span.badge.counter-slide {
 
 .xs .navbar-toggle {
    background-color: white;
-   color: var(--mycolor);
+   color: var(--colorBosco);
    border: none;
 }
 
 .xs .navbar-toggle {
    background-color: white;
-   color: var(--mycolor);
+   color: var(--colorBosco);
    border: none;
 }
 
 .xs .navbar-collapse {
-   background-color: var(--mycolor);
+   background-color: var(--colorBosco);
    /* color: white; */
 }
 
@@ -905,7 +833,7 @@ span.badge.counter-slide {
    width: 40px;
    height: 40px;
    border-radius: 10px!important;
-   background-color: var(--mycolor);
+   background-color: var(--colorBosco);
    color: white;
    font-size: 14px;
    padding: 10px;
@@ -918,12 +846,12 @@ span.badge.counter-slide {
 .xs.mode-s .modal-content {
    border-radius: 10px!important;
    padding: 10px!important;
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    background-color: #fffffff7!important;
 }
 
 .xs.mode-s .modal-title {
-   color: var(--mycolor);
+   color: var(--colorBosco);
 }
 
 .xs.mode-s .mv-theme {
@@ -945,7 +873,7 @@ span.badge.counter-slide {
    width: 40px;
    height: 40px;
    border-radius: 10px!important;
-   background-color: var(--mycolor);
+   background-color: var(--colorBosco);
    color: white;
    font-size: 14px;
    padding: 10px;
@@ -955,7 +883,7 @@ span.badge.counter-slide {
 .xs.mode-u #searchtool {
    top: 10px!important;
    right: 10px!important;
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
 }
 
 .xs.mode-u #btn-mode-su-menu:hover {
@@ -965,12 +893,12 @@ span.badge.counter-slide {
 .xs.mode-u .modal-content {
    border-radius: 10px!important;
    padding: 10px!important;
-   font-family: var(--myfont);
+   font-family: var(--fontBosco);
    background-color: #fffffff7!important;
 }
 
 .xs.mode-u .modal-title {
-   color: var(--mycolor);
+   color: var(--colorBosco);
 }
 
 .xs.mode-u .mv-theme {
@@ -985,7 +913,7 @@ span.badge.counter-slide {
 /* MOBILE */
 
 .xs.mode-d .navbar-toggle {
-   color: var(--mycolor);
+   color: var(--colorBosco);
    background-color: #ffffff;
    border: none;
 }
@@ -999,7 +927,7 @@ span.badge.counter-slide {
 }
 
 .xs.mode-d .navbar-collapse {
-   background-color: var(--mycolor);
+   background-color: var(--colorBosco);
 }
 
 .xs.mode-d .mv-nav a {
@@ -1009,14 +937,11 @@ span.badge.counter-slide {
 }
 
 .xs.mode-d .modal-content {
-   border-radius: 10px!important;
-   padding: 10px!important;
-   font-family: var(--myfont);
-   background-color: #fffffff7!important;
+   font-family: var(--fontBosco);
 }
 
 .xs.mode-d .modal-title {
-   color: var(--mycolor);
+   color: var(--colorBosco);
 }
 
 .xs.mode-d .mv-theme {

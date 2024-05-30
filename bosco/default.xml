@@ -2,17 +2,19 @@
 <config>
     <application
         id="bosco"
-        title="BOSCO - Humidité de sols de surface par satellite"
+        title="BOSCO - Humidité des sols de surface par satellite"
+        favicon="apps/bosco/img/bosco_favicon.png"
         mouseposition="false" logo=""
-        help="apps/bosco/mviewer_help.html"
+        help="apps/bosco/boscoHome.html"
+        showhelp="true"
         measuretools="true"
         exportpng="true"
         style="apps/bosco/css/theme.css"
         togglealllayersfromtheme="true" />
     <extensions>
-        <extension type="javascript"
-            src="apps/bosco/lib/highcharts/highstock.js" />
+        <extension type="javascript" src="apps/bosco/lib/highcharts/highstock.js" />        
         <extension type="component" id="stats-ogc" path="apps/bosco/addons"/>
+        <extension type="javascript" src="https://code.highcharts.com/highcharts-more.js" />  
     </extensions>
     <mapoptions maxzoom="19"
         projection="EPSG:3857"
@@ -78,7 +80,6 @@
                 type="sensorthings"
                 name="Chroniques de l'humidité des Parcelles "
                 visible="false"
-                expanded="true"
                 legendurl="https://geosas.fr/img/bosco/centroide.png"
                 queryable="true"
                 url="https://frost.geosas.fr/bosco/v1.0"
@@ -99,7 +100,29 @@
             collapsed="false"
             id="habitant"
             icon="fas fa-users">
-            
+            <layer id="rpg_bosco"
+                name="Contour des parcelles RPG"
+                type="wms" tiled="true"
+                vectorlegend="true"
+                url="https://geosas.fr/geoserver/bosco/ows"
+                queryable="true"
+                visible="true"
+                searchable="true"
+                sensorthingsfield="thingsUrl"
+                sensorthingsid="thing_id"
+                infoformat="application/vnd.ogc.gml"
+                sensorserviceurl="https://frost.geosas.fr/bosco/v1.0"
+                top="1500"
+                srs="4326"
+                selector="id,name,description"
+                datastreamsfilter="name,description,id,unitOfMeasurement"
+                multidatastreamsfilter="name,description,id,unitOfMeasurements"
+                attribution="Source: UMR TETIS AgroParisTech CIRAD CNRS INRAE"
+                infopanel="bottom-panel"
+                >
+                <template
+                    url="apps/bosco/templates/sensor-wms-highcharts.mst"></template>
+            </layer>
             <layer id="humidite_bzh"
                 name="Humidité des sols 2017/2022 (%)"
                 type="wms" tiled="true"
@@ -120,30 +143,7 @@
                 searchable="true"
                 attribution="Source: UMR TETIS AgroParisTech CIRAD CNRS INRAE">
             </layer>
-            <layer id="rpg_bosco"
-                name="Contour des parcelles RPG"
-                type="wms" tiled="true"
-                vectorlegend="true"
-                url="https://geosas.fr/geoserver/bosco/ows"
-                queryable="true"
-                visible="true"
-                showintoc="false"
-                searchable="true"
-                sensorthingsfield="thingsUrl"
-                sensorthingsid="thing_id"
-                infoformat="application/vnd.ogc.gml"
-                sensorserviceurl="https://frost.geosas.fr/bosco/v1.0"
-                top="1500"
-                srs="4326"
-                selector="id,name,description"
-                datastreamsfilter="name,description,id,unitOfMeasurement"
-                multidatastreamsfilter="name,description,id,unitOfMeasurements"
-                attribution="Source: UMR TETIS AgroParisTech CIRAD CNRS INRAE"
-                infopanel="bottom-panel"
-                >
-                <template
-                    url="apps/bosco/templates/sensor-wms-highcharts.mst"></template>
-            </layer>
+            
         </theme>
 
     </themes>
