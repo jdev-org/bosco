@@ -2,17 +2,19 @@
 <config>
     <application
         id="bosco"
-        title="Humidité de sols de surface par satellite - Projet BOSCO"
+        title="BOSCO - Humidité des sols de surface par satellite"
+        favicon="apps/bosco/img/bosco_favicon.png"
         mouseposition="false" logo=""
-        help="apps/bosco/mviewer_help.html"
+        help="apps/bosco/boscoHome.html"
+        showhelp="true"
         measuretools="true"
         exportpng="true"
-        style="css/themes/wet_asphalt.css"
+        style="apps/bosco/css/theme.css"
         togglealllayersfromtheme="true" />
     <extensions>
-        <extension type="javascript"
-            src="apps/bosco/lib/highcharts/highstock.js" />
+        <extension type="javascript" src="apps/bosco/lib/highcharts/highstock.js" />        
         <extension type="component" id="stats-ogc" path="apps/bosco/addons"/>
+        <extension type="javascript" src="https://code.highcharts.com/highcharts-more.js" />  
     </extensions>
     <mapoptions maxzoom="19"
         projection="EPSG:3857"
@@ -78,7 +80,6 @@
                 type="sensorthings"
                 name="Chroniques de l'humidité des Parcelles "
                 visible="false"
-                expanded="true"
                 legendurl="https://geosas.fr/img/bosco/centroide.png"
                 queryable="true"
                 url="https://frost.geosas.fr/bosco/v1.0"
@@ -138,9 +139,11 @@
                 metadata-csw="https://geosas.fr/geonetwork/srv/fre/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;elementSetName=full&amp;ID&amp;ID=61e08cd1-d24d-457d-a08e-98ff796627ab"
                 queryable="false"
                 visible="true"
+                expanded="true"
                 searchable="true"
                 attribution="Source: UMR TETIS AgroParisTech CIRAD CNRS INRAE">
             </layer>
+            
         </theme>
 
     </themes>

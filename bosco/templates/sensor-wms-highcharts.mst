@@ -1,5 +1,5 @@
 {{#features}}
-	<li id="{{feature_ol_uid}}" class="inventaire item el-{{feature_ol_uid}}">
+	<li id="{{feature_ol_uid}}" class="inventaire item el-{{feature_ol_uid}} bosco_graphPanel">
         {{#observations}}
             <p>
                 <b>Streams sélectionnés : </b> {{streamsNames}}
@@ -10,36 +10,50 @@
                 <button type="button" target="chart-container" class="btn btn-default activate pinfos">Chronologie</button>
             </div>
             <div class="btn-group" role="group">
-                <button type="button" target="global-container" class="btn btn-default pinfos">Infos. Parcelle</button>
+                <button type="button" target="global-container" class="btn btn-default pinfos">Synthèse annuelle <span id="tabYear-{{feature_ol_uid}}"></span></button>
             </div>
         </div>
         <div class="sections">
-            <div class="sub-section chart-container chart" id="chart-container-{{feature_ol_uid}}" style="width: 100%">
-                <canvas id="chart-{{feature_ol_uid}}"></canvas>
-            </div>
-            <div class="sub-section global-container">
-                <h4>Informations sur la parcelle : {{idp}}</h4>
-                <div class="alert alert-warning" role="alert">
-                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    Vous devez commencer par sélectionner une année (cliquez sur la graphique).
+            <div class="sub-section chart-container">
+                <div style="margin: 0.5em 0;">
+                    <h4 >Évolution de l'humidité du sol de 2017 à 2022 pour la parcelle {{idp}}</h4>
+                </div>                
+                <div class="chart" id="chart-container-{{feature_ol_uid}}" style="width: 100%">                    
+                    <canvas id="chart-{{feature_ol_uid}}"></canvas>
                 </div>
-                <div class="flexible" style="display:none;">
-                    <div class="container-chart" id="cn-chart-{{feature_ol_uid}}"></div>
-                    <div class="card-infos">
-                        <div class="number">
-                            <object class="svg" data="apps/bosco/templates/img/calendar.svg"></object>
-                            <p class="title-number">
-                                <span id="year-{{feature_ol_uid}}"></span>
-                            </p>
-                        </div>
-                        <div class="number">
-                            <object class="svg" data="apps/bosco/templates/img/plant.svg"></object>
-                            <p class="title-number">
-                                <span id="cn-{{feature_ol_uid}}"></span>
-                            </p>
+                <div class="info__use">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 11V17H13V11H11ZM11 7V9H13V7H11Z"></path></svg>
+                    Sélectionner une date sur le graphique pour modifier la temporalité sur la carte et consulter la synthèse annuelle associée 
+                </div>
+            </div>
+            <div class="sub-section global-container" style="display:none">                
+                <div class="alert__tabGraph">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 11V17H13V11H11ZM11 7V9H13V7H11Z"></path></svg>
+                    Sélectionner une date sur le graphique de la chronologie pour visualiser la synthèse annuelle associée 
+                </div>
+                <div class="syntheseTab" style="display:none;">
+                    <h4>Évolution de l'humidité du sol en <span id="titleYear-{{feature_ol_uid}}"></span> pour la parcelle {{idp}}</h4>
+                    <h6>Par rapport à la période 2017-2022</h6>
+                    <div class="flexible" >
+                        <div class="container-chart" id="cn-chart-{{feature_ol_uid}}"></div>
+                        <div class="card-infos">
+                            <div class="number" style="background-color: #204f9c">
+                                    <object class="svg" data="apps/bosco/templates/img/calendar.svg"></object>                                
+                                    <div>
+                                        <div class="title-number" id="year-{{feature_ol_uid}}"></div>
+                                        <div class="subtitle-number">Année sélectionnée</div>
+                                    </div>
+                            </div>
+                            <div class="number" style="background-color: #45ab67">
+                                <object class="svg" data="apps/bosco/templates/img/plant.svg"></object>
+                                <div>
+                                    <div class="title-number" id="cn-{{feature_ol_uid}}"></div>
+                                    <div class="subtitle-number">Culture de la parcelle durant l'année</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div>                
             </div>
         </div>
     </li>
@@ -79,10 +93,16 @@
            chart: {
                zooming: {
                    type: 'xy'
-               }
+               },
+               height: 340,
+               style: {
+                    fontFamily: "Montserrat"
+                }
            },
            legend: {
-              enabled: true
+              enabled: true,
+              align: 'center',
+                verticalAlign: 'top'
            },
            rangeSelector: {
                verticalAlign: 'top',
@@ -95,11 +115,7 @@
            },
            xAxis : {
                type: 'datetime',
-                labels: {
-                formatter() {
-                    return ' year'
-                }
-                },
+                units: [['year', [1]]]
                 
            }
        })
@@ -117,7 +133,7 @@
             title:{
                 text: unitName
             },
-            label:{
+            labels:{
                 format: '{value} '+unitSymbol
             },
             opposite: true,
@@ -125,8 +141,9 @@
         });
         chart.addSeries({
             yAxis: unitName,
-            name: label,
+            name: "Teneur en eau de surface (%)",
             data: datasets,
+            color:'#204f9c',
             tooltip: {
                 valueDecimals: 2,
                 valueSuffix: unitSymbol
@@ -184,6 +201,7 @@
     }
 
 
+
     // change layer date on chart click
     document.getElementById("chart-container-{{feature_ol_uid}}").addEventListener('click', e => {
         const olUid = "{{feature_ol_uid}}";
@@ -203,8 +221,8 @@
             "cn-chart-{{feature_ol_uid}}",
             "{{idp}}"
             );
-            document.querySelector(".global-container .flexible").style.display = "";
-            document.querySelector(".global-container .alert").style.display = "none"
+            document.querySelector(".global-container .syntheseTab").style.display = "";
+            document.querySelector(".global-container .alert__tabGraph").style.display = "none"
         }
     });
     </script>
@@ -225,20 +243,38 @@
     })
     </script>
     <style>
+    .bosco_graphPanel {
+        font-family: var(--fontBosco);
+    }
+
     .pinfos {
-        border: 1px solid rgba(69,90,100, 0.2);
+        border: 1px solid rgba(69, 90, 100, 0.2);
+        border-radius: 0;
+        text-align: left;
     }
     .pinfos.activate {
-        background-color: #455a64;
+        background-color: var(--colorBosco);
         color: white;
+        font-weight: 600;
     }
+    .bosco_graphPanel h4 {
+        color: var(--colorBosco);
+        font-weight: 700;
+        margin-bottom: 0;
+    }
+
+    .bosco_graphPanel h6 {
+        margin: 0;
+        color: var(--colorBosco);
+        font-style: italic;
+    }
+
     .flexible {
         display: flex;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         flex-direction: row;
-        align-items: center;
+        align-items: stretch;
         justify-content: flex-start;
-        align-content: center;
     }
     .number .svg{
         max-width: 50px;
@@ -247,9 +283,15 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        background-color: #383895;
+        color: white;
+        text-align: center;
+        padding: 20px 12px;
+        width: 13rem;
     }
     #bottom-panel.active{
         height: 480px !important;
+        padding: 0 1%!important;
 
     }
     .global-container .alert {
@@ -258,20 +300,49 @@
     .card-infos {
         display: flex;
         flex-direction: column;
-        align-content: space-around;
-        flex-wrap: nowrap;
-        align-items: center;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: space-evenly;
     }
     .container-chart{
         height: 350px;
         max-width: 2000px;
         min-width: 900px;
     }
-    .number path {
-        fill: red;
-    }
     .title-number {
-        font-size: 18px
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.1;
     }
+
+    .subtitle-number {
+        font-size: smaller;
+        font-style: italic;
+        line-height: 1;
+        margin: 5px 0;
+    }
+    .number object {
+        margin-bottom: 10px;
+    }
+    .info__use {
+        display: flex;align-items: stretch;color: #838383;
+    }
+
+    .info__use svg, .alert__tabGraph svg {
+        margin-right: 5px;
+    }
+
+    .alert__tabGraph {
+        font-size: larger;
+        display: flex;
+        align-items: center;
+        color: var(--colorBosco);
+        font-weight: 500;
+        margin: 2em 0;
+        padding: 10px;
+    }
+    
+
     </style>
 {{/features}}

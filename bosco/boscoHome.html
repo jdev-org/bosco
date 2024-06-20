@@ -1,0 +1,352 @@
+<!--HOME-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+        #help{
+            font-family: var(--fontBosco);
+        }
+        #help .modal-title {
+            display: none;
+        }
+		#help .homeHeader {
+			background-color: var(--colorBosco);
+            color: white;
+		}
+
+		.homeHeader img {
+			width: 30%;
+		}
+
+		#help .modal-body {
+			padding: 0;
+		}
+
+		#help .modal-header {
+			padding: 0;
+		}
+
+		#help .modal-header .close {
+			position: absolute;
+			top: 0.5em;
+            right: 0.5em;
+			z-index: 5;
+			color: white;
+			font-size: 3em;
+			opacity: 1;
+			font-weight: 100;
+		}
+
+		.container__homeHeader {
+			padding: 4em 4em 1em;
+		}
+		.homeTitle {
+			font-size: x-large;
+            line-height: 1.1;
+            margin: 1em 0px 2em;
+		}
+
+        .homeTitle .title__large {
+            font-weight: 800;
+            font-size: 1.8em;
+        }
+
+		.homeClose {
+			margin: 3em 0;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.homeClose a {
+			font-size: larger;
+		}
+
+		.homeClose .btnHome {
+			background-color: var(--colorBosco);
+            color: white;
+            padding: 8px 12px;
+            margin-right: 1em;
+		}
+
+		.homeClose .btnHome:hover {
+			opacity: .9;
+		}
+
+        a.btnHomeLink {
+            color: var(--colorBosco);
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+		.homeHeader .nav.nav-pills {
+			margin-top: 2em;
+			border: none;
+		}
+
+		.homeHeader .nav.nav-pills a {
+			font-size: medium;
+            font-weight: 600;
+            padding: 5px 0;
+            margin-right: 1.5em;
+            color: white;
+		}
+
+		.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover, .nav-pills>li>a:hover {
+			background-color: #f0f8ff00;
+			border-bottom: 2px solid white;
+		}
+
+		.homeContent {
+			padding: 2em 4em;
+		}
+
+		.homeContent .tab-pane p {
+			font-size: larger;
+		}
+
+		.homeContent .tab-pane h3 {
+			font-weight: 700;
+            color: var(--colorBosco);
+            font-size: xx-large;
+            margin: 0.5em 0;
+		}
+
+        .homeContent .tab-pane h5 {
+            font-size: large;
+            font-weight: 700;
+            color: var(--colorBosco);
+        }
+
+        .legend__img {
+            font-style: italic;
+            text-align: center;
+        }
+
+        .homeContent li {
+            list-style: none;
+            margin-bottom: 1em;
+            font-size: larger;
+        }
+
+        .homeContent li a {
+            color: var(--colorBosco);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+		.logos__tabCell img {
+			max-width: 120px;
+            max-height: 80px;
+            margin: 0em 1em;
+		}
+
+        .logos__tabCell img:hover {
+            filter: opacity(0.7);
+        }
+
+		.logos__tabCell {
+			display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: center;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 2em;
+		}
+
+        .block__docMethod {
+            color: var(--colorBosco);
+            font-size: larger;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            border-left: 3px solid var(--colorBosco);
+            padding: 5px 1em;
+        }
+
+        .block__docMethod:hover {
+            color: #009ee2;
+            border-left: 3px solid #009ee2;
+        }
+
+        .xs .homeContent {
+            padding: 15px;
+        }
+
+        .xs .container__homeHeader {
+            padding: 15px;
+        }
+
+	</style>
+</head>
+
+<body>
+
+	<!-- Title -->
+	<div class="homeHeader">
+		<div class="container__homeHeader">
+			<div class="homeTitle">
+                <div class="title__large">BOSCO</div>
+                <div>Visualiser l'évolution de l'humidité des sols de surface</div>
+            </div>
+			<ul class="nav nav-pills" role="tablist">
+				<li role="presentation" class="active">
+					<a href="#h_tab1" aria-controls="profile" role="tab" data-toggle="tab">Le projet</a>
+				</li>
+				<li role="presentation">
+					<a href="#h_tab2" aria-controls="profile" role="tab" data-toggle="tab">Méthode</a>
+				</li>
+				<li role="presentation">
+					<a href="#h_tab3" aria-controls="profile" role="tab" data-toggle="tab">Bibliographie</a>
+				</li>
+				<li role="presentation">
+					<a href="#h_tab4" aria-controls="profile" role="tab" data-toggle="tab">Partenaires</a>
+				</li>	
+			</ul>
+		</div>		
+	</div>
+	<!-- /.Title -->
+
+	<div class="homeContent">
+		<div class="tab-content">
+			<!-- TAB1 -->
+			<div role="tabpanel" class="tab-pane active" id="h_tab1">
+                <h3>Le projet Bosco</h3>
+                <p>
+                    Le projet BOSCO propose de co-construire un service d’estimation de teneur en eau sur le territoire breton à très haute résolution spatiale et temporelle, pertinente pour la gestion agricole et des ressources en eau. Ce service intègre des outils diagnostique et des produits dérivés (teneur en eau sur l’épaisseur racinaire, estimation de la recharge) pour l’appui aux politiques publiques. 
+                </p>				
+                <iframe width="100%" height="400" src="https://www.youtube.com/embed/Jz135UeLfsY" title="BOSCO: service to estimate water content on the Breton territory" frameborder="0"></iframe>
+			</div>
+			<!-- /.TAB1 -->
+			<!-- TAB2 -->
+			<div role="tabpanel" class="tab-pane" id="h_tab2">
+				<h3>Méthode</h3>
+                <h5>Rappel de l’objectif</h5>
+                <p>
+                    L'objectif de cette tâche est d’appliquer la méthode opérationnelle de cartographie de l’humidité des sols sur
+                    la région Bretagne. La méthode d’estimation de l’humidité, développée à l’INRAE (UMR TETIS), est basée
+                    sur l'utilisation d'images satellitaires des nouveaux systèmes d’observation de la Terre Copernicus radar et
+                    optique Sentinel-1 et Sentinel-2 (données gratuites et libres d’accès). Ces nouveaux capteurs qui fournissent
+                    des données avec des résolutions spatiales et temporelles élevées ouvrent de nouvelles opportunités pour
+                    cartographier l’humidité des sols en milieu agricole. Les estimations d’humidité correspondent à l’humidité de
+                    la première couche du sol (5-10 cm). Les cartes d'humidité sont établies à l’échelle de la parcelle pour les années 2017, 2018, 2019, 2020 et 2020 (sur les parcelles agricoles et prairies en excluant les vignes et les arbres fruitiers). De plus, des cartes de l’indice NDVI (information spatialisée sur l'état de développement de
+                    la végétation) sont calculées à partir des images optiques Sentinel-2. 
+                </p>
+                <img src="apps/bosco/img/tuilesSentinel.png" style="width: 100%;"/>
+                <div class="legend__img">Tuiles Sentinel-1 utilisées dans cette étude.</div>
+                <h5 style="margin-top: 1.2em;">Cartographie de l’humidité des sols</h5>
+                <p>Le suivi spatio-temporel de l'humidité du sol dans les zones agricoles est d'une grande importance pour de
+                    nombreuses applications, notamment celles liées au cycle continental de l'eau. L'utilisation de capteurs in
+                    situ assure cette surveillance mais cette technique est très coûteuse et elle ne peut être réalisée que sur une
+                    très petite zone agricole, d'où l'importance de la télédétection spatiale qui permet désormais une
+                    cartographie opérationnelle à grande échelle de l'humidité du sol à forte résolution spatio-temporelle.</p>
+                <p>Les images radar sont utilisées depuis longtemps pour estimer et cartographier l'humidité de surface des sols
+                    nus. Pour les surfaces avec une couverture végétale, le couplage de données radar et optique est souvent
+                    nécessaire pour estimer l'humidité du sol. Les données optiques sont complémentaires des données radar,
+                    et leur intérêt réside dans leur potentiel à estimer les paramètres biophysiques de la végétation, par exemple
+                    le Leaf Area Index (LAI) et le Normalized Difference Vegetation Index (NDVI). Ces paramètres permettent
+                    d'évaluer la contribution de la végétation dans le signal radar rétrodiffusé, et par conséquent d'extraire la
+                    contribution du sol pour ensuite l'inverser et estimer l'humidité du sol.</p>
+                <p>Pour cartographier l'humidité du sol dans le cas d’un sol couvert de végétation, la plupart des études utilisent
+                    le modèle semi-empirique Water Cloud développé par Attema et Ulaby en 1978. Généralement, dans ce
+                    modèle, le signal radar total rétrodiffusé est modélisé comme la somme du signal rétrodiffusé du sol multiplié
+                    par l'atténuation bidirectionnelle, et du signal direct réfléchi par la végétation. Dans la plupart des études, la
+                    contribution de la végétation est exprimée par un paramètre biophysique de la végétation (biomasse, LAI,
+                    teneur en eau de la végétation, ou NDVI). La contribution du sol est généralement modélisée en fonction de
+                    l'humidité et de la rugosité du sol pour des paramètres instrumentaux donnés : angle d'incidence, longueur
+                    d'onde et polarisation. Il peut être simulé à l'aide d'un modèle physique de rétrodiffusion radar (Integral
+                    Equation Model "IEM" développé par Fung en 1994), ou d'un modèle de rétrodiffusion semi-empirique (par
+                    exemple le modèle de Baghdadi, Baghdadi et al., 2016).</p>
+                <p>Récemment, l'arrivée du satellite radar à synthèse d'ouverture (SAR) Sentinel-1 (S1) a fourni aux utilisateurs
+                    des données SAR en libre accès à une résolution spatiale élevée (10 m x 10 m) et avec un temps de revisite
+                    élevé (six jours en Europe). La mission S1 de l'Agence spatiale européenne (ESA) est une constellation de
+                    deux satellites SAR en orbite polaire (Sentinel-1A et Sentinel-1B) fonctionnant dans la bande C (~ 5,4 GHz).
+                    Les données SAR de la mission S1 à des résolutions spatiales et temporelles élevées ont encouragé la
+                    cartographie de l'humidité du sol en mode opérationnel.
+                    </p>
+                <p>El Hajj et al. (2017) ont développé une méthode opérationnelle pour cartographier l'humidité de surface du
+                    sol (SSM) à l'échelle de la parcelle sur les zones agricoles basée sur le couplage des données S1-SAR et
+                    des données optiques Sentinel-2 (S2) en utilisant la technique du réseau neuronal (S²MP). Les cartes S2MP
+                    sont produites pour les cultures été-hiver dans les zones agricoles et les prairies (elles ne sont pas produites
+                    aux vignobles et aux vergers). Les cartes S2MP sont dérivées pour les images S1 acquises dans les modes
+                    d'acquisition ascendant (heure d’acquisition ~ 18:00 TU) et descendant (heure d’acquisition ~ 06:00 TU).
+                    Près de 20 images S1 couvrent totalement ou partiellement la plupart des bassins versants en France par
+                    mois. Ainsi, une estimation de l’humidité du sol pourra être disponible au maximum tous les 3 ou 4 jours. Le
+                    produit final d’humidité a été validé grâce à une grande campagne de terrain près de la ville de Montpellier
+                    (près de 500 mesures in situ) et la précision obtenue sur l’humidité volumique est de l’ordre de de 6 vol.%.
+                    L’algorithme est en général appliqué tant que l’indice de végétation des parcelles NDVI n’est pas supérieur à
+                    environ 0.7. Au-delà de ce seuil, le signal radar n’atteint pas le sol et l’estimation de l’humidité du sol est
+                    impossible car le signal radar reçu contient la contribution de la végétation mais pas celle du sol. De plus,
+                    l’algorithme est appliqué sur les parcelles avec une pente inférieure ou égale à 20%.
+                    </p>
+                    <a class="block__docMethod" target="_blank" href="https://geosas.fr/metadata/pdf/Livrable_TED_Bosco_Mars2022_Bretagne_INRAE_Baghdadi.pdf">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM8 7H16V9H8V7ZM8 11H16V13H8V11ZM8 15H16V17H8V15Z"></path></svg>
+                        Consulter la méthodologie détaillée                         
+                    </a>
+				
+			</div>
+			<!-- /.TAB2 -->
+			<!-- TAB3 -->
+			<div role="tabpanel" class="tab-pane" id="h_tab3">
+				<h3>Bibliographie</h3>
+                <p>
+                    <li>Baghdadi N., Choker M., Zribi M., El Hajj M., Paloscia S., Verhoest N., Lievens H., Baup F., Mattia F., 2016. A new empirical model for radar scattering from bare soil surfaces. Remote Sensing, vol. 8, Issue 11, pp. 1-14, doi: 10.3390/rs8110920.</li>
+                    <li>Bazzi H., Baghdadi N., Ienco D., El Hajj M., Zribi M., Belhouchette H., Escorihuela M.J., Demarez V., 2019. Mapping Irrigated Areas Using Sentinel-1 Time Series in Catalonia, Spain. Remote Sensing, Remote Sens. 2019, 11, 1836; doi:10.3390/rs11151836</li>
+                    <li>Boken, V.K., Hoogenboom, G., Kogan, F.N., Hook, J.E., Thomas, D.L., Harrison, K.A., 2004. Potential of using NOAA-AVHRR data for estimating irrigated area to help solve an inter-state water dispute. International Journal of Remote Sensing 25, 2277–2286</li>
+                    <li>Gao, Q., Zribi, M., Escorihuela, M., Baghdadi, N., Segui, P., 2018. Irrigation Mapping Using Sentinel-1 Time Series at Field Scale.Remote Sensing 10, 1495.<a href="https://doi.org/10.3390/rs10091495" target="_blank">https://doi.org/10.3390/rs10091495</a> .</li>
+                    <li>Hajj M., Baghdadi N., Zribi M., Bazzi H., « Synergic Use of Sentinel-1 and Sentinel-2 Images for Operational Soil Moisture Mapping at High Spatial Resolution over Agricultural Areas », Remote Sensing, 9 (12), 1292, 2017.</li>
+                    <li>Pageot Y., Baup F., Inglada J., Baghdadi N., Demarez V., 2020. Detection of irrigated and rainfed crops in temperate areas using Sentinel-1 and Sentinel-2 time series. Remote Sens. 2020, 12, 3044; doi:10.3390/rs12183044</li>
+                    <li>Thenkabail, P.S., Schull, M., Turral, H., 2005. Ganges and Indus river basin land use/land cover (LULC) and irrigated area mapping using continuous streams of MODIS data. Remote Sensing of Environment 95, 317–341.
+                    <a href="https://doi.org/10.1016/j.rse.2004.12.018" target="_blank">https://doi.org/10.1016/j.rse.2004.12.018</a></li>				
+                </p>
+            </div>
+			<!-- /.TAB3 -->
+			<!-- TAB4 -->
+			<div role="tabpanel" class="tab-pane" id="h_tab4">
+				<h3>Partenaires</h3>
+                <h5>Financeurs</h5>
+				<div class="logos__tabCell">					
+					<a href="https://www.spaceclimateobservatory.org/fr" target="_blank"><img src="apps/bosco/img/logos/sco.png"/></a>
+                    <a href="https://cnes.fr/fr" target="_blank"><img src="apps/bosco/img/logos/cnes.jpg"/></a>
+				</div>
+                <h5>Observatoires</h5>
+				<div class="logos__tabCell">					
+					<a href="https://www-iuem.univ-brest.fr/" target="_blank"><img src="apps/bosco/img/logos/iuem.png"/></a>
+                    <a href="https://umrsas.rennes.hub.inrae.fr/" target="_blank"><img src="apps/bosco/img/logos/umr_sas.jpg"/></a>
+                    <a href="https://geosciences.univ-rennes.fr/" target="_blank"><img src="apps/bosco/img/logos/geosciences_rennes.jpg"/></a>
+                    <a href="https://osur.univ-rennes.fr/" target="_blank"><img src="apps/bosco/img/logos/osur.png"/></a>
+				</div>
+                <h5>Facilitateurs</h5>
+				<div class="logos__tabCell">					
+					<a href="https://cms.geobretagne.fr/" target="_blank"><img src="apps/bosco/img/logos/geobretagne.png"/></a>
+                    <a href="https://bretagne-environnement.fr/" target="_blank"><img src="apps/bosco/img/logos/oeb.png"/></a>
+                    <a href="https://irispace.fr/" target="_blank"><img src="apps/bosco/img/logos/irispace.png"/></a>
+                    <a href="https://geosas.fr/web/" target="_blank"><img src="apps/bosco/img/logos/geosas.png"/></a>
+				</div>
+                <h5>Entreprises</h5>
+				<div class="logos__tabCell">					
+					<a href="https://terrascience.consulting/" target="_blank"><img src="apps/bosco/img/logos/terrasciences.png"/></a>
+				</div>
+                <h5>Recherches</h5>
+				<div class="logos__tabCell">					
+					<a href="https://www.institut-agro-rennes-angers.fr/" target="_blank"><img src="apps/bosco/img/logos/Institut_Agro_Rennes-Angers.png"/></a>
+                    <a href="https://www.cnrs.fr/fr" target="_blank"><img src="apps/bosco/img/logos/cnrs.png"/></a>
+                    <a href="https://www.umr-tetis.fr/index.php/fr/" target="_blank"><img src="apps/bosco/img/logos/tetis.jpg"/></a>
+                    <a href="https://letg.cnrs.fr/" target="_blank"><img src="apps/bosco/img/logos/letg.png"/></a>
+                    <a href="https://www.inrae.fr/" target="_blank"><img src="apps/bosco/img/logos/inrae.png"/></a>
+				</div>
+			</div>
+			<!-- /.TAB4 -->
+		</div>
+		<div class="homeClose">
+				<a href="" class="btnHome" data-dismiss="modal">Accéder à l'application</a>
+				<a href="https://www.spaceclimateobservatory.org/fr/bosco" class="btnHomeLink" target="_blank">En savoir plus</a>			
+		</div>
+	</div>
+	
+
+</body>
+
+</html>

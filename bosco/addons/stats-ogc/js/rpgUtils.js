@@ -46,6 +46,8 @@ export const requestCulture = (year, params, featureOlUid) => {
         if(infos) {
             document.querySelector(`#cn-${featureOlUid}`).innerHTML = infos.label.fr;
             document.querySelector(`#year-${featureOlUid}`).innerHTML = year;
+            document.querySelector(`#titleYear-${featureOlUid}`).innerHTML = year;  
+            document.querySelector(`#tabYear-${featureOlUid}`).innerHTML = year;      
         }
     }
     req.setProcess(onReq);
