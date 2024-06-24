@@ -1,4 +1,5 @@
 {{#features}}
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts-more.js"></script>
 	<li id="{{feature_ol_uid}}" class="inventaire item el-{{feature_ol_uid}} bosco_graphPanel">
         {{#observations}}
             <p>
@@ -240,11 +241,13 @@
         x.addEventListener("click", ({target}) => {
             document.querySelectorAll(".el-{{feature_ol_uid}} .pinfos").forEach(z => z.classList.remove("activate"));
             target.classList.add("activate");
-            const panel = document.querySelectorAll(".activate")[0].attributes.target.value;
-            document.querySelectorAll(".sub-section").forEach(e => {e.style.display="none"});
-            const panelToShow = document.querySelectorAll(`.sub-section.${panel}`)[0];
-            if(panelToShow) {
-                panelToShow.style.display = "";
+            const panel = document.querySelectorAll(".activate")[0]?.attributes?.target?.value;
+            if(panel) {
+                document.querySelectorAll(".sub-section").forEach(e => {e.style.display="none"});
+                const panelToShow = document.querySelectorAll(`.sub-section.${panel}`)[0];
+                if(panelToShow) {
+                    panelToShow.style.display = "";
+                }   
             }
         })
     })

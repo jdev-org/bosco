@@ -12,9 +12,8 @@
         style="apps/bosco/css/theme.css"
         togglealllayersfromtheme="true" />
     <extensions>
-        <extension type="javascript" src="apps/bosco/lib/highcharts/highstock.js" />        
+        <extension type="javascript" src="apps/bosco/lib/highcharts/highstock.js" />  
         <extension type="component" id="stats-ogc" path="apps/bosco/addons"/>
-        <extension type="javascript" src="https://code.highcharts.com/highcharts-more.js" />  
     </extensions>
     <mapoptions maxzoom="19"
         projection="EPSG:3857"
